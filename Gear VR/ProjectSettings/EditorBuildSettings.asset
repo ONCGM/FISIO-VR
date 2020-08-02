@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main.unity
+    path: Assets/Scenes/Calibration.unity
     guid: a479e9ab809286440a5a60ab8aefd391
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: c6fe2effe353ab2438df5630d8a605fe
+  - enabled: 1
+    path: Assets/Scenes/GameSetup.unity
+    guid: 8e4dd8e8ad901d14b82e0a1c579855b1
+  - enabled: 1
+    path: Assets/Scenes/CatchGame.unity
+    guid: 6ab2b3a93c0d8e84a8ac6b7029905935
+  - enabled: 1
+    path: Assets/Scenes/Colors Game.unity
+    guid: 846627033cec5fe4c9cccd5468a0fc0e
+  - enabled: 1
+    path: Assets/Scenes/Flying Game.unity
+    guid: a65df2afc0ef7124d84b5ec451a5bc2b
   m_configObjects: {}

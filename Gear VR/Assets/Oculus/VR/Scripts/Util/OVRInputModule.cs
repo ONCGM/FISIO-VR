@@ -69,9 +69,7 @@ namespace UnityEngine.EventSystems
         [SerializeField]
         private float m_SpherecastRadius = 1.0f;       
 
-        [Header("Gear VR Controller")]
-        public Transform trackingSpace;
-        public LineRenderer lineRenderer;
+
 
 
 
@@ -602,27 +600,7 @@ namespace UnityEngine.EventSystems
             leftData.Reset();
 
             //Now set the world space ray. This ray is what the user uses to point at UI elements
-            OVRInput.Controller controller = OVRInput.GetConnectedControllers () & (OVRInput.Controller.LTrackedRemote | OVRInput.Controller.RTrackedRemote);
-            if (lineRenderer != null) {
-                lineRenderer.enabled = trackingSpace != null && controller != OVRInput.Controller.None;
-            }
-            if (trackingSpace != null && controller != OVRInput.Controller.None) {
-                controller = ((controller & OVRInput.Controller.LTrackedRemote) != OVRInput.Controller.None) ? OVRInput.Controller.LTrackedRemote : 			OVRInput.Controller.RTrackedRemote;
-
-                Quaternion orientation = OVRInput.GetLocalControllerRotation (controller);
-                Vector3 localStartPoint = OVRInput.GetLocalControllerPosition (controller);
-   
-                Matrix4x4 localToWorld = trackingSpace.localToWorldMatrix;
-                Vector3 worldStartPoint = localToWorld.MultiplyPoint (localStartPoint);
-                Vector3 worldOrientation = localToWorld.MultiplyVector (orientation * Vector3.forward);
-                leftData.worldSpaceRay = new Ray (worldStartPoint, worldOrientation);
-                if (lineRenderer != null) {
-                    lineRenderer.SetPosition (0, worldStartPoint);
-                    lineRenderer.SetPosition (1, worldStartPoint + worldOrientation * 500.0f);
-                }
-            } else {
-                leftData.worldSpaceRay = new Ray (rayTransform.position, rayTransform.forward);
-            }
+            leftData.worldSpaceRay = new Ray(rayTransform.position, rayTransform.forward);
             leftData.scrollDelta = GetExtraScrollDelta();
 
             //Populate some default values
@@ -634,7 +612,7 @@ namespace UnityEngine.EventSystems
             leftData.pointerCurrentRaycast = raycast;
             m_RaycastResultCache.Clear();
 
-            if(m_Cursor != null) m_Cursor.SetCursorRay(rayTransform);
+            m_Cursor.SetCursorRay(rayTransform);
 
             OVRRaycaster ovrRaycaster = raycast.module as OVRRaycaster;
             // We're only interested in intersections from OVRRaycasters
@@ -652,7 +630,7 @@ namespace UnityEngine.EventSystems
                     // Set are gaze indicator with this world position and normal
                     Vector3 worldPos = raycast.worldPosition;
                     Vector3 normal = GetRectTransformNormal(graphicRect);
-                    if(m_Cursor != null) m_Cursor.SetCursorStartDest(rayTransform.position, worldPos, normal);
+                    m_Cursor.SetCursorStartDest(rayTransform.position, worldPos, normal);
                 }
             }
 
@@ -676,7 +654,7 @@ namespace UnityEngine.EventSystems
 
                 leftData.position = physicsRaycaster.GetScreenPos(raycast.worldPosition);
 
-                if(m_Cursor != null) m_Cursor.SetCursorStartDest(rayTransform.position, position, raycast.worldNormal);
+                m_Cursor.SetCursorStartDest(rayTransform.position, position, raycast.worldNormal);
             }
 
             // Stick default data values in right and middle slots for compatability
@@ -878,7 +856,7 @@ namespace UnityEngine.EventSystems
         /// <returns></returns>
         virtual protected PointerEventData.FramePressState GetGazeButtonState()
         {
-            var pressed = Input.GetKeyDown(gazeClickKey) || OVRInput.GetDown(joyPadClickButton);
+            var pressed = Input.GetMouseButtonDown(0) || OVRInput.GetDown (OVRInput.RawButton.X, OVRInput.Controller.Active) || OVRInput.Get (OVRInput.Button.PrimaryIndexTrigger);
             var released = Input.GetKeyUp(gazeClickKey) || OVRInput.GetUp(joyPadClickButton);
 
 #if UNITY_ANDROID && !UNITY_EDITOR

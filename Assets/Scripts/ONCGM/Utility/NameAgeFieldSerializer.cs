@@ -19,6 +19,7 @@ namespace ONCGM.Utility {
         private void Awake() {
             nameField.text = SaveSystem.LoadedData.PlayerName;
             ageField.text = SaveSystem.LoadedData.PlayerAge.ToString();
+            idField.text = SaveSystem.LoadedData.PatientId;
         }
 
         /// <summary>

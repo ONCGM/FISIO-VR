@@ -45,7 +45,6 @@ namespace ONCGM.Game {
         private float timeBetweenRounds = 0f;
         private int allowedInputMistakes = 1;
         private int maxAllowedInputMistakes = 1;
-        private bool waitingForRecenter = false;
 
         // Properties
         public bool InputGenerateMode { get; private set; } = true;
@@ -117,8 +116,7 @@ namespace ONCGM.Game {
             ColorsMinigameController.OnMinigameBegun.AddListener(FadeInSprites);
             ColorsMinigameController.OnMinigameEnded.AddListener(FadeOutSprites);
             DeviceAngleInput.OnInputChange.AddListener(CheckForInputs);
-            DeviceAngleInput.OnCentered.AddListener(() => waitingForRecenter = false);
-            
+
             // Null checks.
             if(hitCanvasPrefab == null) {
                 hitCanvasPrefab = Resources.Load<GameObject>(hitCanvasPrefabPath);
@@ -222,7 +220,7 @@ namespace ONCGM.Game {
         /// </summary>
         private void CheckForInputs(InputDirection direction) {
             // If generating inputs or displaying animation and if the game hasn't started, return.
-            if(InputGenerateMode || !ColorsMinigameController.HasStarted || waitingForRecenter) return;
+            if(InputGenerateMode || !ColorsMinigameController.HasStarted) return;
             
             // If any of the list is a null, make a new one.
             if(generatedInputs == null) generatedInputs = new List<SpawnDirection>();
@@ -243,6 +241,10 @@ namespace ONCGM.Game {
                 case InputDirection.Backward:
                     convertedDirection = SpawnDirection.Up;
                     break;
+                case InputDirection.Centered:
+                    return;
+                case InputDirection.InvalidDirection:
+                    return;
             }
             
             // Check if the player has lost the game.
@@ -269,8 +271,6 @@ namespace ONCGM.Game {
                 go.GetComponent<HitFeedbackUi>().PickRandomText(false);
                 go.transform.localScale = Vector3.one * 5;
             }
-
-            waitingForRecenter = true;
             
             // If the player has reached the generated input count,
             // restore errors (this assumes the inputs were all correct)
@@ -292,8 +292,6 @@ namespace ONCGM.Game {
         /// </summary>
         private IEnumerator RoundInterval() {
             yield return waitForSecondsRounds;
-
-            waitingForRecenter = false;
             
             StartCoroutine(AnimateColorSequence(GenerateInputs()));
         }

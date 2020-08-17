@@ -3423,7 +3423,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameField: {fileID: 1410150665}
   ageField: {fileID: 1798951702}
-  idField: {fileID: 894453521}
 --- !u!1 &1452368948
 GameObject:
   m_ObjectHideFlags: 0

@@ -158,7 +158,7 @@ namespace ONCGM.Game {
             if((currentMinigame == Minigames.Invalid || currentMinigame == Minigames.All) && CurrentSettings.MinigamesToIncludeInSession != Minigames.CatchAndColors && 
                CurrentSettings.MinigamesToIncludeInSession != Minigames.CatchAndFlying &&
                CurrentSettings.MinigamesToIncludeInSession != Minigames.ColorsAndFlying) {
-                return (GameScene) Mathf.Min((int) GameScene.CatchGame + (int) CurrentSettings.MinigamesToIncludeInSession, 4);
+                return (GameScene) ((int) GameScene.CatchGame + (int) CurrentSettings.MinigamesToIncludeInSession);
             }
             
             if(currentMinigame == Minigames.Invalid || currentMinigame == Minigames.All) {
@@ -168,7 +168,13 @@ namespace ONCGM.Game {
             if(currentMinigame == Minigames.CatchGame) {
                 return (int) CurrentSettings.MinigamesToIncludeInSession < 3 ? 
                     GameScene.GameSetup : CurrentSettings.MinigamesToIncludeInSession == Minigames.CatchAndColors ?
-                        GameScene.ColorsGame : GameScene.GameSetup;
+                        GameScene.ColorsGame : GameScene.FlyingGame;
+            }
+
+            if(currentMinigame == Minigames.ColorsGame) {
+                return (int) CurrentSettings.MinigamesToIncludeInSession < 3 ?
+                    GameScene.GameSetup : CurrentSettings.MinigamesToIncludeInSession == Minigames.CatchAndColors ?
+                        GameScene.GameSetup : GameScene.FlyingGame;
             }
 
             return GameScene.GameSetup;

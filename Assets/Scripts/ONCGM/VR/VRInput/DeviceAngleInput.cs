@@ -217,6 +217,8 @@ namespace ONCGM.VR.VRInput {
                     timeInCurrentInput = 0f;
                     OnCentered.Invoke();
                 }
+            } else {
+                currentDirection = InputDirection.InvalidDirection;
             }
 
             if(CheckAccelerometerTolerancePositive((smoothDetection ? CalibratedAcceleration.y : Input.acceleration.y)) && !alreadyCalculatedADirection) {
@@ -256,7 +258,7 @@ namespace ONCGM.VR.VRInput {
             }
 
             if(lastDirection != currentDirection) {
-                OnInputChange.Invoke(currentDirection);
+                OnInputChange.Invoke(CurrentDirection);
             }
             
             lastDirection = currentDirection;

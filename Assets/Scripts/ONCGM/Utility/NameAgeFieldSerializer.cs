@@ -20,7 +20,10 @@ namespace ONCGM.Utility {
             nameField.text = SaveSystem.LoadedData.PlayerName;
             ageField.text = SaveSystem.LoadedData.PlayerAge.ToString();
 <<<<<<< HEAD
+<<<<<<< HEAD
             idField.text = SaveSystem.LoadedData.PatientId.ToString();
+=======
+>>>>>>> parent of 92bdcd2... Bug fix
 =======
 >>>>>>> parent of 92bdcd2... Bug fix
         }

@@ -22,7 +22,7 @@ namespace ONCGM.Utility {
         /// <summary>
         /// The patient medical id.
         /// </summary>
-        public string PatientId = string.Empty;
+        public int PatientId = 0;
         
         /// <summary>
         /// Did the player stand for this session.

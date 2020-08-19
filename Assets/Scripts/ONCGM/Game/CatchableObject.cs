@@ -107,9 +107,7 @@ namespace ONCGM.Game {
         private void ExitSceneAnimation() {
             anim.SetTrigger(Exit);
             arrowAnim.SetTrigger(Exit);
-            foreach(var triangle in triangleArrows) {
-                triangle.SetActive(false);
-            }
+            foreach(var triangle in triangleArrows) triangle.SetActive(false);
         }
         
         /// <summary>
@@ -135,7 +133,12 @@ namespace ONCGM.Game {
         /// Checks if the current direction is met.
         /// </summary>
         private void CheckInput(InputDirection direction) {
-            if(direction != directionToCheckInput || !isColliding) return;
+            #if UNITY_EDITOR
+                if(direction != directionToCheckInput) return;
+            #else
+                if(direction != directionToCheckInput || !isColliding) return;
+            #endif
+            
             switch(GameManager.CurrentMinigame) {
                 case Minigames.CatchGame:
                     CatchMinigameController.CurrentSession.AmountOfSuccessfulInputsOnSession++;

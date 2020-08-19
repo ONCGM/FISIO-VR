@@ -153,6 +153,9 @@ namespace ONCGM.VR.VRInput {
             if(!detectMovementInput) return;
             CalibratedAcceleration = (averagedAcceleration - Input.acceleration);
             movementDetectionType();
+
+            // Override input on editor for testing purposes.
+            if(Application.isEditor) EditorKeyboardInputOverride();
         }
         
         #endregion
@@ -256,9 +259,6 @@ namespace ONCGM.VR.VRInput {
                     currentDirection = InputDirection.Forward;
                 }
             }
-
-            // Override input on editor for testing purposes.
-            if(Application.isEditor) EditorKeyboardInputOverride();
             
             if(lastDirection != currentDirection) {
                 OnInputChange.Invoke(CurrentDirection);
@@ -273,12 +273,15 @@ namespace ONCGM.VR.VRInput {
         /// </summary>
         private static void EditorKeyboardInputOverride() {
             var input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            
-            lastDirection = (input.x > 0.1f  ? InputDirection.Right :
-                             input.x < -0.1f ? InputDirection.Left : InputDirection.Centered);
-            
-            lastDirection = (input.y > 0.1f  ? InputDirection.Forward :
-                             input.y < -0.1f ? InputDirection.Backward : InputDirection.Centered);
+
+            // ReSharper disable once RedundantAssignment
+            var inputDir = (input.x > 0.1f  ? InputDirection.Right :
+                            input.x < -0.1f ? InputDirection.Left : 
+                                              (input.y > 0.1f  ? InputDirection.Backward :
+                                                                     input.y < -0.1f ? InputDirection.Forward :
+                                                                         InputDirection.Centered));
+
+            OnInputChange.Invoke(inputDir);
         }
         
         #endregion

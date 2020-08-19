@@ -243,11 +243,13 @@ namespace ONCGM.Game {
                 case InputDirection.Backward:
                     convertedDirection = SpawnDirection.Up;
                     break;
+                case InputDirection.Centered:
+                    return;
             }
             
             // Check if the player has lost the game.
             if(allowedInputMistakes <= 0) {
-                ColorsMinigameController.EndMinigame();
+                //ColorsMinigameController.EndMinigame();
             }
             
             // Check if the player has gotten the input correctly.
@@ -269,8 +271,6 @@ namespace ONCGM.Game {
                 go.GetComponent<HitFeedbackUi>().PickRandomText(false);
                 go.transform.localScale = Vector3.one * 5;
             }
-
-            waitingForRecenter = true;
             
             // If the player has reached the generated input count,
             // restore errors (this assumes the inputs were all correct)

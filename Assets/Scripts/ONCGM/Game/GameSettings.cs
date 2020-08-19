@@ -64,7 +64,7 @@ namespace ONCGM.Game {
         /// <summary>
         /// Private property for TotalSessionTime.
         /// </summary>
-        private float totalSessionTime = 0.5f;
+        private float totalSessionTime = 2f;
         /// <summary>
         /// The amount of time that the session will last in minutes. This will be set on the game setup scene.
         /// The minigames time will be equally divided from this value. 

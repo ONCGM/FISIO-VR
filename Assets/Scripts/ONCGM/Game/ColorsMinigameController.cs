@@ -20,7 +20,7 @@ namespace ONCGM.Game {
         /// <summary>
         /// How many seconds are left in the current session.
         /// </summary>
-        public static int SecondsLeftInMinigame { get; private set; } = 60;
+        public static int SecondsLeftInMinigame { get; private set; } = 120;
         /// <summary>
         /// Has the minigame started.
         /// </summary>
@@ -69,7 +69,7 @@ namespace ONCGM.Game {
             if(GameManager.CurrentSettings.MinigamesToIncludeInSession == Minigames.ColorsGame) {
                 SecondsLeftInMinigame = Mathf.CeilToInt(GameManager.CurrentSettings.TotalSessionTime * 60f);
             } else if(GameManager.CurrentSettings.MinigamesToIncludeInSession == Minigames.All) {
-                SecondsLeftInMinigame = Mathf.CeilToInt((GameManager.CurrentSettings.TotalSessionTime * 60f) / 3f);
+                SecondsLeftInMinigame = Mathf.CeilToInt((GameManager.CurrentSettings.TotalSessionTime * 60f) / 2f);
             } else if(GameManager.CurrentSettings.MinigamesToIncludeInSession == Minigames.CatchAndColors ||
                       GameManager.CurrentSettings.MinigamesToIncludeInSession == Minigames.ColorsAndFlying) {
                 SecondsLeftInMinigame = Mathf.CeilToInt((GameManager.CurrentSettings.TotalSessionTime * 60f) / 2f);

@@ -13,7 +13,7 @@ namespace ONCGM.VR.VRButtons {
         protected void Start() {
             textToDisplayBeforeState = "SFX: ";
             ToggleState = SaveSystem.LoadedData.sfxEnabled;
-            ToggleState = true;
+            UpdateState();
         }
         
         /// <summary>
@@ -24,6 +24,7 @@ namespace ONCGM.VR.VRButtons {
             UiAudioHandler.PlayClip(UiAudioClips.Click);
             onClickHandler.Invoke();
             ToggleState = SaveSystem.LoadedData.sfxEnabled;
+            UpdateState();
             canClick = false;
             StartCoroutine(nameof(UnlockClick));
         }

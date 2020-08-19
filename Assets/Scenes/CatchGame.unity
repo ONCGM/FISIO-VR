@@ -441,6 +441,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVRCameraRig
       objectReference: {fileID: 0}
+    - target: {fileID: 5622165075499806785, guid: 691e719294bdaf14bb88606ef508426f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8407392846186970871, guid: 691e719294bdaf14bb88606ef508426f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -507,6 +512,14 @@ PrefabInstance:
     - target: {fileID: 428608599, guid: 691e719294bdaf14bb88606ef508426f, type: 3}
       propertyPath: far clip plane
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 428608599, guid: 691e719294bdaf14bb88606ef508426f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 263272186, guid: 691e719294bdaf14bb88606ef508426f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1673367434, guid: 691e719294bdaf14bb88606ef508426f, type: 3}
       propertyPath: m_LocalPosition.x

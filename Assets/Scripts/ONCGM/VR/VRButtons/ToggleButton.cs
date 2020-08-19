@@ -41,9 +41,7 @@ namespace ONCGM.VR.VRButtons {
         public bool ToggleState {
             get => toggleState;
             set {
-                if(toggleState != value) {
-                    UpdateState();
-                }
+                if(toggleState != value) UpdateState();
                 toggleState = value;
             }
         }
@@ -63,7 +61,6 @@ namespace ONCGM.VR.VRButtons {
             uiText = GetComponentInChildren<TMP_Text>() as TMP_Text;
             waitAFrame = new WaitForEndOfFrame();
             waitASecond = new WaitForSecondsRealtime(0.4f);
-            UpdateState();
         }
 
         /// <summary>
@@ -81,7 +78,6 @@ namespace ONCGM.VR.VRButtons {
         public override void OnPointerClick(PointerEventData eventData) {
             if(!canClick) return;
             onClickHandler.Invoke();
-            UpdateState();
             canClick = false;
             StartCoroutine(nameof(UnlockClick));
         }

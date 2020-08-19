@@ -257,12 +257,28 @@ namespace ONCGM.VR.VRInput {
                 }
             }
 
+            // Override input on editor for testing purposes.
+            if(Application.isEditor) EditorKeyboardInputOverride();
+            
             if(lastDirection != currentDirection) {
                 OnInputChange.Invoke(CurrentDirection);
             }
             
             lastDirection = currentDirection;
             alreadyCalculatedADirection = false;
+        }
+
+        /// <summary>
+        /// Overrides input when using the editor for testing purposes.
+        /// </summary>
+        private static void EditorKeyboardInputOverride() {
+            var input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+            
+            lastDirection = (input.x > 0.1f  ? InputDirection.Right :
+                             input.x < -0.1f ? InputDirection.Left : InputDirection.Centered);
+            
+            lastDirection = (input.y > 0.1f  ? InputDirection.Forward :
+                             input.y < -0.1f ? InputDirection.Backward : InputDirection.Centered);
         }
         
         #endregion

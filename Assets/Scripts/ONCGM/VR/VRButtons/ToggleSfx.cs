@@ -11,10 +11,9 @@ namespace ONCGM.VR.VRButtons {
     /// </summary>
     public class ToggleSfx : ToggleButton {
         protected void Start() {
-            base.Awake();
             textToDisplayBeforeState = "SFX: ";
             ToggleState = SaveSystem.LoadedData.sfxEnabled;
-            UpdateState();
+            ToggleState = true;
         }
         
         /// <summary>
@@ -25,7 +24,6 @@ namespace ONCGM.VR.VRButtons {
             UiAudioHandler.PlayClip(UiAudioClips.Click);
             onClickHandler.Invoke();
             ToggleState = SaveSystem.LoadedData.sfxEnabled;
-            UpdateState();
             canClick = false;
             StartCoroutine(nameof(UnlockClick));
         }

@@ -16,7 +16,7 @@ Elias da Silva Pereira (ONCGM)
 Marta Rosecler Bez e Simone de Paula
 
 #### Assets
-Skecthfab.com
+Skecthfab.com - 
 Low Poly Forest Waterfall Scene by Art.Yan,
 Cartoon Butterfly by jabrils,
 Low Poly Helicopter by antonmoek,
@@ -25,7 +25,7 @@ Low Poly Helicopter by antonmoek,
 Bensound.com
 
 #### Efeitos
-Freesound.org,
+Freesound.org - 
 Helicopter by Mings,
 Wing flap by ani_music,
 Waterfall by InspectorJ,
@@ -59,25 +59,24 @@ The project was developed by Elias da Silva Pereira and supervised by Marta Rose
 Elias da Silva Pereira (ONCGM)
 
 #### Guidance
-Marta Rosecler Bez
-Simone de Paula
+Marta Rosecler Bez e Simone de Paula
 
 #### Assets
-Skecthfab.com
-Low Poly Forest Waterfall Scene by Art.Yan
-Cartoon Butterfly by jabrils
-Low Poly Helicopter by antonmoek
+Skecthfab.com -
+Low Poly Forest Waterfall Scene by Art.Yan,
+Cartoon Butterfly by jabrils,
+Low Poly Helicopter by antonmoek,
 
 #### Music
 Bensound.com
 
 #### SFX
-Freesound.org
-Helicopter by Mings
-Wing flap by ani_music
-Waterfall by InspectorJ
-Dogs barking by BonnyOrbit
-Water fountain by BonnyOrbit
+Freesound.org - 
+Helicopter by Mings,
+Wing flap by ani_music,
+Waterfall by InspectorJ,
+Dogs barking by BonnyOrbit,
+Water fountain by BonnyOrbit,
 City ambience by felix.blume
 
 *Sound files adapted to suit the game needs.*

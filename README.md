@@ -5,7 +5,7 @@
 A principal função é de ajudar cadeirantes a exercitar o tronco e desenvolver um melhor equilíbrio na cadeira de rodas enquanto se divertem com um dos mini-jogos em RV.
 
 ### Sobre
-Projeto foi desenvolvido por Elias Pereira (@_oncgm)_ e orientado por Marta Rosecler Bez e Simone de Paula para Universidade Feevale durante bolsa de estudos para pesquisa e desenvolvimento de novas tecnologias aplicadas ao ensino na área da saúde.
+Projeto foi desenvolvido por Elias Pereira e orientado por Marta Rosecler Bez e Simone de Paula para Universidade Feevale durante bolsa de estudos para pesquisa e desenvolvimento de novas tecnologias aplicadas ao ensino na área da saúde.
 
 ### Créditos
 
@@ -52,7 +52,7 @@ Hack by Source Foundry Authors
 The main function is to help wheelchair users exercise their torso and develop a better balance in the wheelchair while having fun with one of the VR mini-games.
 
 ### About
-The project was developed by Elias Pereira (@_oncgm)_ and supervised by Marta Rosecler Bez and Simone de Paula for Feevale University during the research and development scholarship for new technologies applied to health education.
+The project was developed by Elias Pereira and supervised by Marta Rosecler Bez and Simone de Paula for Feevale University during the research and development scholarship for new technologies applied to health education.
 
 ### Credits
 

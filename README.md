@@ -10,10 +10,12 @@ Projeto foi desenvolvido por Elias da Silva Pereira e orientado por Marta Rosecl
 ### Créditos
 
 #### Desenvolvedor
-Elias da Silva Pereira [Twitter](https://twitter.com/_oncgm)
+[Elias da Silva Pereira](https://twitter.com/_oncgm)
 
 #### Orientadores
-Marta Rosecler Bez e Simone de Paula
+[Marta Rosecler Bez](mailto:martabez@gmail.com)
+
+[Simone de Paula](http://sdpaula@feevale.br)
 
 #### Assets
 Skecthfab.com - 
@@ -56,10 +58,12 @@ The project was developed by Elias da Silva Pereira and supervised by Marta Rose
 ### Credits
 
 #### Developer
-Elias da Silva Pereira [Twitter](https://twitter.com/_oncgm)
+[Elias da Silva Pereira](https://twitter.com/_oncgm)
 
 #### Guidance
-Marta Rosecler Bez e Simone de Paula
+[Marta Rosecler Bez](mailto:martabez@gmail.com) 
+
+[Simone de Paula](http://sdpaula@feevale.br)
 
 #### Assets
 Skecthfab.com -

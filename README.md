@@ -10,7 +10,7 @@ Projeto foi desenvolvido por Elias da Silva Pereira e orientado por Marta Rosecl
 ### Créditos
 
 #### Desenvolvedor
-Elias da Silva Pereira (ONCGM)
+Elias da Silva Pereira [Twitter](https://twitter.com/_oncgm)
 
 #### Orientadores
 Marta Rosecler Bez e Simone de Paula
@@ -56,7 +56,7 @@ The project was developed by Elias da Silva Pereira and supervised by Marta Rose
 ### Credits
 
 #### Developer
-Elias da Silva Pereira (ONCGM)
+Elias da Silva Pereira [Twitter](https://twitter.com/_oncgm)
 
 #### Guidance
 Marta Rosecler Bez e Simone de Paula

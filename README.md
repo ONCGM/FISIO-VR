@@ -15,7 +15,7 @@ Projeto foi desenvolvido por Elias da Silva Pereira e orientado por Marta Rosecl
 #### Orientadores
 [Marta Rosecler Bez](mailto:martabez@gmail.com)
 
-[Simone de Paula](http://sdpaula@feevale.br)
+[Simone de Paula](mailto:sdpaula@feevale.br)
 
 #### Assets
 Skecthfab.com - 
@@ -63,7 +63,7 @@ The project was developed by Elias da Silva Pereira and supervised by Marta Rose
 #### Guidance
 [Marta Rosecler Bez](mailto:martabez@gmail.com) 
 
-[Simone de Paula](http://sdpaula@feevale.br)
+[Simone de Paula](mailto:sdpaula@feevale.br)
 
 #### Assets
 Skecthfab.com -

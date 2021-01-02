@@ -5,104 +5,106 @@ using ONCGM.VR.VREnums;
 namespace ONCGM.Game {
     /// <summary>
     /// Holds information about a game session.
+    /// Only class in portuguese so that the json file
+    /// is easier to be read by health professionals.
     /// </summary>
     [Serializable]
     public class GameSession {
         /// <summary>
         /// The name of the player who generated this session data.
         /// </summary>
-        public string PlayerName = "Jogador";
+        public string Nome = "Jogador";
         
         /// <summary>
         /// The age of the player who generated this session data.
         /// </summary>
-        public int PlayerAge = 0;
+        public int Idade = 0;
         
         /// <summary>
         /// The patient medical id.
         /// </summary>
-        public int PatientId = 0;
+        public int IdPaciente = 0;
         
         /// <summary>
         /// The session id.
         /// </summary>
-        public int SessionID = 0;
+        public int IdSessao = 0;
         
         /// <summary>
         /// Did the player stand for this session.
         /// </summary>
-        public bool isStanding = false;
+        public bool JogouDePe = false;
 
         /// <summary>
         /// The minimum angle setting on the game settings class. Used by the game manager.
         /// </summary>
-        public float MinimumAngleSelected = 0f;
+        public float AnguloMinimo = 0f;
 
         /// <summary>
         /// The minimum time to validate input setting on the game settings class. Used by the game manager.
         /// </summary>
-        public float MinimumTimeToValidateInput = 0f;
+        public float TempoMinimoParaContarAcerto = 0f;
 
         /// <summary>
         /// The game difficulty setting on the game settings class. Used by the game manager.
         /// </summary>
-        public int GameDifficulty = 0;
+        public int Dificuldade = 0;
         
         /// <summary>
         /// What minigame was this session relevant to.
         /// </summary>
-        public Minigames MinigameOfThisSession = Minigames.All;
+        public Minigames MinijogoDestaSessao = Minigames.All;
         
         /// <summary>
-        /// The setting of the of included minigames on the game settings class. Used by the game manager.
+        /// The setting of the included minigames on the game settings class. Used by the game manager.
         /// </summary>
-        public Minigames MinigamesUsedInSession = Minigames.All;
+        public Minigames SelecaoDeMinijogos = Minigames.All;
 
         /// <summary>
         /// A list of every angle the player reached on any given input during a game session.
         /// </summary>
-        public List<float> AngleOnEveryInput = new List<float>();
+        public List<float> AnguloDeCadaMovimento = new List<float>();
         
         /// <summary>
-        /// A list of every angle the player reached on any given input during a game session.
+        /// A list of every direction the player moved towards on any given input during a game session.
         /// </summary>
-        public List<string> DirectionOnEveryInput = new List<string>();
+        public List<string> DirecaoDeCadaMovimento = new List<string>();
         
         /// <summary>
         /// List of the position that every object spawned.
         /// </summary>
-        public List<string> PositionOfEveryObjectSpawned = new List<string>();
+        public List<string> PosicaoDeCadaMovimento = new List<string>();
         
         /// <summary>
         /// The amount of times the player made an input in the session.
         /// Meaning the total amount of repetitions that the player performed.
         /// </summary>
-        public int AmountOfSuccessfulInputsOnSession = 0;
+        public int QuantidadeDeAcertos = 0;
         
         /// <summary>
         /// The amount of times the player made an input in the session.
         /// Meaning the total amount of repetitions that the player performed.
         /// </summary>
-        public int AmountOfUnsuccessfulInputsOnSession = 0;
+        public int QuantidadeDeErros = 0;
         
         /// <summary>
         /// The time and date of the session collected when it started.
         /// </summary>
-        public DateTime TimeAtBeginningOfSession = new DateTime();
+        public DateTime HoraNoInicioDaSessao = new DateTime();
         
         /// <summary>
         /// How long the session lasted in minutes.
         /// </summary>
-        public float TotalSessionTime = 0f;
+        public float TempoTotalDaSessao = 0f;
 
         /// <summary>
         /// The score that the player reached in this game session.
         /// </summary>
-        public float SessionScore = 0f;
+        public float PontuacaoDaSessao = 0f;
 
         /// <summary>
         /// The average angle delta variation during the session.
         /// </summary>
-        public float AngleDeltaAverage = 0f;
+        public float MediaDeInclinacao = 0f;
     }
 }

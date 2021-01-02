@@ -256,14 +256,14 @@ namespace ONCGM.Game {
             if(convertedDirection == generatedInputs[Mathf.Max(0, playerInputs.Count)]) {
                 // Success.
                 playerInputs.Add(convertedDirection);
-                ColorsMinigameController.CurrentSession.SessionScore += generatedInputs.Count;
-                ColorsMinigameController.CurrentSession.AmountOfSuccessfulInputsOnSession++;
+                ColorsMinigameController.CurrentSession.PontuacaoDaSessao += generatedInputs.Count;
+                ColorsMinigameController.CurrentSession.QuantidadeDeAcertos++;
                 GameObject go = Instantiate(hitCanvasPrefab, transform.position, transform.rotation);
                 go.GetComponent<HitFeedbackUi>().PickRandomText(true);
                 go.transform.localScale = Vector3.one * 5;
             } else {
                 // Miss.
-                ColorsMinigameController.CurrentSession.AmountOfUnsuccessfulInputsOnSession++;
+                ColorsMinigameController.CurrentSession.QuantidadeDeErros++;
                 allowedInputMistakes--;
                 mistakesText.text = allowedInputMistakes.ToString();
                 mistakesTextAnimator.SetTrigger(Fade);
@@ -311,7 +311,7 @@ namespace ONCGM.Game {
             
             generatedInputs = new List<SpawnDirection> {input};
             
-            ColorsMinigameController.CurrentSession.DirectionOnEveryInput.Add(SpawnDirectionCatchGameExtension.ToString(input));
+            ColorsMinigameController.CurrentSession.PosicaoDeCadaMovimento.Add(SpawnDirectionCatchGameExtension.ToString(input));
             
             return generatedInputs;
         }

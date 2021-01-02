@@ -31,14 +31,14 @@ namespace ONCGM.Utility {
 
         // Stats data.
         /// <summary>
-        /// How many times the player calibrated his device.
+        /// How many sessions have been played.
         /// </summary>
-        public int TimesCalibrated = 0;
+        public int TotalSessions = 0;
         
         /// <summary>
         /// The game session that this player generated during play time.
         /// </summary>
-        public List<GameSession> PlayerSessions = new List<GameSession>();
+        public List<GameSession> SessoesDeJogo = new List<GameSession>();
         
         // Settings.
         /// <summary>

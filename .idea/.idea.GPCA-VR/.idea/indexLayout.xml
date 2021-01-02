@@ -43,12 +43,15 @@
     </explicitIncludes>
     <explicitExcludes>
       <Path>.git</Path>
+      <Path>.github</Path>
       <Path>.gradle</Path>
       <Path>.idea</Path>
+      <Path>Last Build</Path>
       <Path>Library</Path>
       <Path>Logs</Path>
       <Path>Temp</Path>
       <Path>UserSettings</Path>
+      <Path>docs</Path>
       <Path>obj</Path>
     </explicitExcludes>
   </component>

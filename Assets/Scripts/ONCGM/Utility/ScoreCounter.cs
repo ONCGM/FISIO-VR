@@ -61,12 +61,12 @@ namespace ONCGM.Utility {
             switch(GameManager.CurrentMinigame) {
                 case Minigames.CatchGame:
                     if(CatchMinigameController.HasStarted) {
-                        UpdateUI(CatchMinigameController.CurrentSession.SessionScore.ToString(CultureInfo.CurrentCulture));
+                        UpdateUI(CatchMinigameController.CurrentSession.PontuacaoDaSessao.ToString(CultureInfo.CurrentCulture));
                     }
                     break;
                 case Minigames.ColorsGame:
                     if(ColorsMinigameController.HasStarted) {
-                        UpdateUI(ColorsMinigameController.CurrentSession.SessionScore.ToString(CultureInfo.CurrentCulture));
+                        UpdateUI(ColorsMinigameController.CurrentSession.PontuacaoDaSessao.ToString(CultureInfo.CurrentCulture));
                     }
                     break;
                 case Minigames.FlyingGame:
@@ -81,10 +81,10 @@ namespace ONCGM.Utility {
         private void EndGameText() {
             switch(GameManager.CurrentMinigame) {
                 case Minigames.CatchGame:
-                    scoreTextMesh.text = string.Concat(endGameText, CatchMinigameController.CurrentSession.SessionScore);
+                    scoreTextMesh.text = string.Concat(endGameText, CatchMinigameController.CurrentSession.PontuacaoDaSessao);
                     break;
                 case Minigames.ColorsGame:
-                    scoreTextMesh.text = string.Concat(endGameText, ColorsMinigameController.CurrentSession.SessionScore);
+                    scoreTextMesh.text = string.Concat(endGameText, ColorsMinigameController.CurrentSession.PontuacaoDaSessao);
                     break;
                 case Minigames.FlyingGame:
                     // Add later

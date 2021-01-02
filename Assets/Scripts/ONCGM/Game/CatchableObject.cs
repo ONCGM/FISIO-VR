@@ -30,6 +30,7 @@ namespace ONCGM.Game {
         private WaitForEndOfFrame waitForFrame;
         private WaitForSeconds waitForSeconds;
         private bool isColliding;
+        private bool checkInput;
         private static readonly int DirectionY = Animator.StringToHash("DirectionY");
         private static readonly int DirectionX = Animator.StringToHash("DirectionX");
         private static readonly int Exit = Animator.StringToHash("Exit");
@@ -75,12 +76,15 @@ namespace ONCGM.Game {
             waitForFrame = new WaitForEndOfFrame();
             waitForSeconds = new WaitForSeconds((GameManager.CurrentSettings.MinimumTimeToValidateInput + AmountOfTimeToAccountForDifficulty) - (int) GameManager.CurrentSettings.GameDifficulty);
             DeviceAngleInput.OnInputChange.AddListener(CheckInput);
+            
             switch(GameManager.CurrentMinigame) {
                 case Minigames.CatchGame:
                     CatchMinigameController.OnMinigameEnded.AddListener(RemoveOnEndGame);
+                    CatchMinigameController.CurrentSession.PosicaoDeCadaMovimento.Add(InputDirectionExtension.ToString(directionToCheckInput));
                     break;
                 case Minigames.ColorsGame:
                     ColorsMinigameController.OnMinigameEnded.AddListener(RemoveOnEndGame);
+                    ColorsMinigameController.CurrentSession.PosicaoDeCadaMovimento.Add(InputDirectionExtension.ToString(directionToCheckInput));
                     break;
                 case Minigames.FlyingGame:
                     // Add later
@@ -92,6 +96,7 @@ namespace ONCGM.Game {
         /// Starts the time out timer. Intended to be used by an animator.
         /// </summary>
         public void StartTimer() {
+            checkInput = true;
             StartCoroutine(nameof(TimeOut));
             DOVirtual.Float(0f, 1f, ((GameManager.CurrentSettings.MinimumTimeToValidateInput + AmountOfTimeToAccountForDifficulty) - (int) GameManager.CurrentSettings.GameDifficulty), 
                             value => colorTransitionAmount = value);
@@ -133,6 +138,8 @@ namespace ONCGM.Game {
         /// Checks if the current direction is met.
         /// </summary>
         private void CheckInput(InputDirection direction) {
+            if(!checkInput) return;
+            
             #if UNITY_EDITOR
                 if(direction != directionToCheckInput) return;
             #else
@@ -141,14 +148,14 @@ namespace ONCGM.Game {
             
             switch(GameManager.CurrentMinigame) {
                 case Minigames.CatchGame:
-                    CatchMinigameController.CurrentSession.AmountOfSuccessfulInputsOnSession++;
-                    CatchMinigameController.CurrentSession.SessionScore +=
+                    CatchMinigameController.CurrentSession.QuantidadeDeAcertos++;
+                    CatchMinigameController.CurrentSession.PontuacaoDaSessao +=
                         (scoreAmount * (1 + (int) GameManager.CurrentSettings.GameDifficulty));
                     StopAllCoroutines();
                     break;
                 case Minigames.ColorsGame:
-                    ColorsMinigameController.CurrentSession.AmountOfSuccessfulInputsOnSession++;
-                    ColorsMinigameController.CurrentSession.SessionScore +=
+                    ColorsMinigameController.CurrentSession.QuantidadeDeAcertos++;
+                    ColorsMinigameController.CurrentSession.PontuacaoDaSessao +=
                         (scoreAmount * (1 + (int) GameManager.CurrentSettings.GameDifficulty));
                     StopAllCoroutines();
                     break;
@@ -170,10 +177,10 @@ namespace ONCGM.Game {
             yield return waitForSeconds;
             switch(GameManager.CurrentMinigame) {
                 case Minigames.CatchGame:
-                    CatchMinigameController.CurrentSession.AmountOfUnsuccessfulInputsOnSession++;
+                    CatchMinigameController.CurrentSession.QuantidadeDeErros++;
                     break;
                 case Minigames.ColorsGame:
-                    ColorsMinigameController.CurrentSession.AmountOfUnsuccessfulInputsOnSession++;
+                    ColorsMinigameController.CurrentSession.QuantidadeDeErros++;
                     break;
                 case Minigames.FlyingGame:
                     // Add later

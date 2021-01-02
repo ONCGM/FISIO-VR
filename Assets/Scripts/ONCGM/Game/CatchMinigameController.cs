@@ -77,8 +77,8 @@ namespace ONCGM.Game {
             HasStarted = true;
             
             CurrentSession = new GameSession {
-                TimeAtBeginningOfSession = DateTime.Now, AngleOnEveryInput = new List<float>(),
-                DirectionOnEveryInput = new List<string>()
+                HoraNoInicioDaSessao = DateTime.Now, AnguloDeCadaMovimento = new List<float>(),
+                DirecaoDeCadaMovimento = new List<string>()
             };
             
             StartCoroutine(nameof(MinigameTimer));
@@ -107,28 +107,30 @@ namespace ONCGM.Game {
         /// Updates the CurrentSession property, adds it to the save file sessions and saves it back to the file.
         /// </summary>
         public static void SaveSessionData() {
-            CurrentSession.PlayerName = SaveSystem.LoadedData.PlayerName;
-            CurrentSession.PlayerAge = SaveSystem.LoadedData.PlayerAge;
-            CurrentSession.isStanding = SaveSystem.LoadedData.isStanding;
-            CurrentSession.PatientId = SaveSystem.LoadedData.PatientId;
-            CurrentSession.TotalSessionTime = GameManager.CurrentSettings.TotalSessionTime;
-            CurrentSession.AngleOnEveryInput.TrimExcess();
-            CurrentSession.DirectionOnEveryInput.TrimExcess();
-            CurrentSession.PositionOfEveryObjectSpawned.TrimExcess();
-            if(CurrentSession.AngleOnEveryInput.Count > 2) {
-                CurrentSession.AngleDeltaAverage = CurrentSession.AngleOnEveryInput.Average(x => x);
-            } else if(CurrentSession.AngleOnEveryInput.Count == 1){
-                CurrentSession.AngleDeltaAverage = CurrentSession.AngleOnEveryInput[0];
+            CurrentSession.Nome = SaveSystem.LoadedData.PlayerName;
+            CurrentSession.Idade = SaveSystem.LoadedData.PlayerAge;
+            CurrentSession.JogouDePe = SaveSystem.LoadedData.isStanding;
+            CurrentSession.IdPaciente = SaveSystem.LoadedData.PatientId;
+            CurrentSession.IdSessao = SaveSystem.LoadedData.TotalSessions;
+            CurrentSession.TempoTotalDaSessao = GameManager.CurrentSettings.TotalSessionTime;
+            CurrentSession.AnguloDeCadaMovimento.TrimExcess();
+            CurrentSession.DirecaoDeCadaMovimento.TrimExcess();
+            CurrentSession.PosicaoDeCadaMovimento.TrimExcess();
+            if(CurrentSession.AnguloDeCadaMovimento.Count > 2) {
+                CurrentSession.MediaDeInclinacao = CurrentSession.AnguloDeCadaMovimento.Average(x => x);
+            } else if(CurrentSession.AnguloDeCadaMovimento.Count == 1){
+                CurrentSession.MediaDeInclinacao = CurrentSession.AnguloDeCadaMovimento[0];
             }
-            CurrentSession.GameDifficulty = (int) GameManager.CurrentSettings.GameDifficulty;
-            CurrentSession.MinimumAngleSelected = GameManager.CurrentSettings.MinimumAngle;
-            CurrentSession.MinigameOfThisSession = GameManager.CurrentMinigame;
-            CurrentSession.MinigamesUsedInSession = GameManager.CurrentSettings.MinigamesToIncludeInSession;
-            CurrentSession.MinimumTimeToValidateInput = GameManager.CurrentSettings.MinimumTimeToValidateInput;
+            CurrentSession.Dificuldade = (int) GameManager.CurrentSettings.GameDifficulty;
+            CurrentSession.AnguloMinimo = GameManager.CurrentSettings.MinimumAngle;
+            CurrentSession.MinijogoDestaSessao = GameManager.CurrentMinigame;
+            CurrentSession.SelecaoDeMinijogos = GameManager.CurrentSettings.MinigamesToIncludeInSession;
+            CurrentSession.TempoMinimoParaContarAcerto = GameManager.CurrentSettings.MinimumTimeToValidateInput;
 
-            SaveSystem.LoadedData.PlayerSessions.Add(CurrentSession);
+            SaveSystem.LoadedData.SessoesDeJogo.Add(CurrentSession);
             SaveSystem.SaveGameToFile();
-            SaveSystem.ExportDataAsJson();
+            SaveSystem.ExportSessionDataAsJson(CurrentSession);
+            SaveSystem.ExportAllSessionsDataAsJson();
         }
         
         /// <summary>
@@ -138,6 +140,7 @@ namespace ONCGM.Game {
             Debug.Log("Minigame finished.");
             HasStarted = false;
             OnMinigameEnded.Invoke();
+            SaveSystem.LoadedData.TotalSessions++;
             SaveSessionData();
         }
         #endregion

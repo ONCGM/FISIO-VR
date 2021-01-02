@@ -65,13 +65,13 @@ namespace ONCGM.Utility {
                 switch(GameManager.CurrentMinigame) {
                     case Minigames.CatchGame:
                         timeText.text = $"{GameManager.CurrentSettings.TotalSessionTime.ToString(CultureInfo.InvariantCulture)} {timeEndText}";
-                        scoreText.text = $"{CatchMinigameController.CurrentSession.SessionScore} {scoreEndText}";
-                        inputsText.text = $"{CatchMinigameController.CurrentSession.AngleOnEveryInput.Count} {inputsEndText}";
+                        scoreText.text = $"{CatchMinigameController.CurrentSession.PontuacaoDaSessao} {scoreEndText}";
+                        inputsText.text = $"{CatchMinigameController.CurrentSession.AnguloDeCadaMovimento.Count} {inputsEndText}";
                         break;
                     case Minigames.ColorsGame:
                         timeText.text = $"{GameManager.CurrentSettings.TotalSessionTime.ToString(CultureInfo.InvariantCulture)} {timeEndText}";
-                        scoreText.text = $"{ColorsMinigameController.CurrentSession.SessionScore} {scoreEndText}";
-                        inputsText.text = $"{ColorsMinigameController.CurrentSession.AngleOnEveryInput.Count} {inputsEndText}";
+                        scoreText.text = $"{ColorsMinigameController.CurrentSession.PontuacaoDaSessao} {scoreEndText}";
+                        inputsText.text = $"{ColorsMinigameController.CurrentSession.AnguloDeCadaMovimento.Count} {inputsEndText}";
                         break;
                     case Minigames.FlyingGame:
                         // Add later

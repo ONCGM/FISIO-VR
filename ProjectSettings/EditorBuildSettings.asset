@@ -21,7 +21,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Colors Game.unity
     guid: 846627033cec5fe4c9cccd5468a0fc0e
   - enabled: 0
-    path: Assets/Scenes/Flying Game (Deprecated).unity
+    path: Assets/Scenes/Flying Game (Deactivated).unity
     guid: a65df2afc0ef7124d84b5ec451a5bc2b
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 93addb388b0776246a0dc60838cb3039,

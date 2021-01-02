@@ -14,13 +14,15 @@ namespace ONCGM.VR.VRInput {
     /// Detects mobile phone acceleration and rotation and turns it into a detectable input.
     /// </summary>
     public class DeviceAngleInput : MonoBehaviour {
-        [Header("Settings")]
-        [Tooltip("Should the sensors detection be smoothed? True for yes.")]
-        [SerializeField] private bool smoothDetection = false;
-        [Tooltip("Defines how much the player has to lean in order to count as a input.")]
-        [SerializeField, Range(5f, 35f)] private float minimumAngle = 10f;
-        [Tooltip("How many samples should the centering system use to average values?")]
-        [SerializeField, Range(10, 1000)] private int accelerationSamplesToCollect = 125;
+        // Use smoothing in calculations.
+        private bool smoothDetection = true;
+        
+        // Minimum angle to count as input.
+        private float minimumAngle = 5f;
+        
+        // How many samples to collect for smoothing.
+        // Ideally, at least 60, but no more than 500, its unnecessary.
+        private const int accelerationSamplesToCollect = 200;
 
         // Variables
         // Should we be detecting the player movement to determine which direction the player is leaning towards.
@@ -113,7 +115,7 @@ namespace ONCGM.VR.VRInput {
         /// Sets up the class to detect the needed values and use the phone gyro and compass.
         /// </summary>
         private void Awake() {
-            minimumAngle = GameManager.CurrentSettings.MinimumAngle;
+            GrabSettingsFromGameManager();
             hasAccelerometer = SystemInfo.supportsAccelerometer;
             hasGyro = SystemInfo.supportsGyroscope;
             TimeForRecenteringProcess = Mathf.Ceil((accelerationSamplesToCollect + (accelerationSamplesToCollect * 
@@ -161,6 +163,15 @@ namespace ONCGM.VR.VRInput {
         #endregion
 
         #region Recentering and tracking
+
+        /// <summary>
+        /// Updates settings to follow the ones the player has chosen.
+        /// </summary>
+        public void GrabSettingsFromGameManager() {
+            minimumAngle = GameManager.CurrentSettings.MinimumAngle;
+            smoothDetection = GameManager.CurrentSettings.useSmoothedInput;
+        }
+        
         /// <summary>
         /// Allow the code to track the users movement.
         /// </summary>
@@ -276,12 +287,12 @@ namespace ONCGM.VR.VRInput {
 
             // ReSharper disable once RedundantAssignment
             var inputDir = (input.x > 0.1f  ? InputDirection.Right :
-                            input.x < -0.1f ? InputDirection.Left : 
+                            input.x < -0.1f ? InputDirection.Left :
                                               (input.y > 0.1f  ? InputDirection.Backward :
-                                                                     input.y < -0.1f ? InputDirection.Forward :
-                                                                         InputDirection.Centered));
+                                               input.y < -0.1f ? InputDirection.Forward :
+                                                                 InputDirection.Centered));
 
-            OnInputChange.Invoke(inputDir);
+            if(inputDir != CurrentDirection) OnInputChange.Invoke(inputDir);
         }
         
         #endregion
@@ -322,12 +333,12 @@ namespace ONCGM.VR.VRInput {
         private void AddInputAngleToSerialization(InputDirection direction) {
             switch(GameManager.CurrentMinigame) {
                 case Minigames.CatchGame:
-                    CatchMinigameController.CurrentSession.AngleOnEveryInput.Add(AngleDifferenceBetweenCenterPositionAndInput);
-                    CatchMinigameController.CurrentSession.DirectionOnEveryInput.Add(InputDirectionExtension.ToString(direction));
+                    CatchMinigameController.CurrentSession.AnguloDeCadaMovimento.Add(AngleDifferenceBetweenCenterPositionAndInput);
+                    CatchMinigameController.CurrentSession.DirecaoDeCadaMovimento.Add(InputDirectionExtension.ToString(direction));
                     break;
                 case Minigames.ColorsGame:
-                    ColorsMinigameController.CurrentSession.AngleOnEveryInput.Add(AngleDifferenceBetweenCenterPositionAndInput);
-                    ColorsMinigameController.CurrentSession.DirectionOnEveryInput.Add(InputDirectionExtension.ToString(direction));
+                    ColorsMinigameController.CurrentSession.AnguloDeCadaMovimento.Add(AngleDifferenceBetweenCenterPositionAndInput);
+                    ColorsMinigameController.CurrentSession.DirecaoDeCadaMovimento.Add(InputDirectionExtension.ToString(direction));
                     break;
                 case Minigames.FlyingGame:
                     // Add later.

@@ -65,7 +65,6 @@ namespace ONCGM.Game {
         /// Ends the calibration process and allows the player to go to the next scene.
         /// </summary>
         private void EndCalibration() {
-            SaveSystem.LoadedData.TimesCalibrated++;
             SaveSystem.SaveGameToFile();
             displayText.text = loadingSceneText;
             loadingAnimation.StopAnimation();

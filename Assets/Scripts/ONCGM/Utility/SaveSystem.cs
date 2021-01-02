@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using ONCGM.Game;
 using ONCGM.VR.VREnums;
@@ -15,18 +16,24 @@ namespace ONCGM.Utility {
     public static class SaveSystem {        
 
         public static SaveData LoadedData { get; set; }
-        private static string DirectoryName { get; set; } = "Gear VR";
+        private static string DirectoryName { get; set; } = "Dados";
+        
+        private static string SessionDirectoryName { get; set; } = "Sessoes";
         private static string SaveFileName { get; set; } = "data.vr";
-        private static string JsonFileName { get; set; } = "data";
+        private static string JsonFileName { get; set; } = "sessão";
+        
+        private static string CompleteJsonFileName { get; set; } = "sessões_fisio_vr";
         private static string SaveFilePath { get; set; }
         private static string JsonFilePath { get; set; }
         
         private static readonly DirectoryInfo Directory;
+        private static readonly DirectoryInfo SessionsDirectory;
 
         static SaveSystem() {
             SaveFilePath = Path.Combine(Application.persistentDataPath, DirectoryName, SaveFileName);
             JsonFilePath = Path.Combine(Application.persistentDataPath, DirectoryName, string.Concat(JsonFileName, GetCurrentDataFormatted(),".json"));
             Directory = new DirectoryInfo(Path.Combine(Application.persistentDataPath, DirectoryName));
+            SessionsDirectory = new DirectoryInfo(Path.Combine(Application.persistentDataPath, DirectoryName, SessionDirectoryName));
             CheckForDirectory();
             LoadedData = LoadGameFile();
         }
@@ -34,18 +41,18 @@ namespace ONCGM.Utility {
         /// <summary>
         /// Checks if the game folder exists, if it doesn't, it will create it.
         /// </summary>
-        private static void CheckForDirectory() {        
-            if(Directory.Exists) {
+        private static void CheckForDirectory() {
+            if(Directory.Exists && SessionsDirectory.Exists) {
                 return;
-            } else {
-                Directory.Create();
             }
+
+            if(!Directory.Exists) Directory.Create();
+            if(!SessionsDirectory.Exists) SessionsDirectory.Create();
         }
 
         /// <summary>
         /// Checks if a save file exists.
         /// </summary>
-        /// <returns></returns>
         public static bool CheckForSaveFile() {
             return File.Exists(SaveFilePath);
         }
@@ -55,9 +62,11 @@ namespace ONCGM.Utility {
         /// </summary>
         public static void SaveGameToFile() {
             CheckForDirectory();
+            
             if(LoadedData == null) {
                 LoadedData = new SaveData();
             }
+            
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fs = new FileStream(SaveFilePath, FileMode.Create);
             bf.Serialize(fs, LoadedData);
@@ -71,7 +80,6 @@ namespace ONCGM.Utility {
         /// If it can't create a new one, it will return a null.
         /// </para>
         /// </summary>
-        /// <returns></returns>
         public static SaveData LoadGameFile() {        
             CheckForDirectory();
             if(CheckForSaveFile()) {
@@ -83,6 +91,8 @@ namespace ONCGM.Utility {
                     return data;
                 } catch(Exception e) {
                     Console.WriteLine(e);
+                    LoadedData = new SaveData();
+                    SaveGameToFile();
                     return new SaveData();
                 }
             } else {
@@ -94,6 +104,8 @@ namespace ONCGM.Utility {
                     fs.Close();
                     return data;
                 } else {
+                    LoadedData = new SaveData();
+                    SaveGameToFile();
                     return new SaveData();
                 }
             }
@@ -102,9 +114,20 @@ namespace ONCGM.Utility {
         /// <summary>
         /// Converts the save file data to json and saves it to the same directory as the save file.
         /// </summary>
-        public static void ExportDataAsJson() {
-            JsonFilePath = Path.Combine(Application.persistentDataPath, DirectoryName, string.Concat(JsonFileName, GetCurrentDataFormatted(),".json"));
-            string jsonData = JsonConvert.SerializeObject(LoadedData.PlayerSessions, Formatting.Indented);
+        public static void ExportSessionDataAsJson([NotNull] GameSession session) {
+            JsonFilePath = Path.Combine(Application.persistentDataPath, DirectoryName, SessionDirectoryName, 
+                                        $"{JsonFileName}-{session.IdSessao}_nome-{session.Nome}_id-{session.IdPaciente}_{GetCurrentDataFormatted()}.json");
+            string jsonData = JsonConvert.SerializeObject(session, Formatting.Indented);
+            File.WriteAllText(JsonFilePath, jsonData, Encoding.ASCII);
+            UiAudioHandler.PlayClip(UiAudioClips.SaveSuccessful);
+        }
+        
+        /// <summary>
+        /// Converts the save file data to json and saves it to the same directory as the save file.
+        /// </summary>
+        public static void ExportAllSessionsDataAsJson() {
+            JsonFilePath = Path.Combine(Application.persistentDataPath, DirectoryName, $"{CompleteJsonFileName}.json");
+            string jsonData = JsonConvert.SerializeObject(LoadedData.SessoesDeJogo, Formatting.Indented);
             File.WriteAllText(JsonFilePath, jsonData, Encoding.ASCII);
             UiAudioHandler.PlayClip(UiAudioClips.SaveSuccessful);
         }
@@ -114,7 +137,7 @@ namespace ONCGM.Utility {
         /// </summary>
         /// <returns></returns>
         private static string GetCurrentDataFormatted() {
-            return string.Concat(DateTime.Now.Day, "_", DateTime.Now.Month, "_", DateTime.Now.Year, "@", DateTime.Now.Hour, "_", DateTime.Now.Minute, "_", DateTime.Now.Second);
+            return $"d{DateTime.Now.Day}_m{DateTime.Now.Month}_a{DateTime.Now.Year}_as_{DateTime.Now.Hour}h{DateTime.Now.Minute}m{DateTime.Now.Second}s";
         }
     }
 }

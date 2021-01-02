@@ -101,5 +101,10 @@ namespace ONCGM.Game {
         /// What type of objects to spawn in the catch game.
         /// </summary>
         public SpawnObjectsCatchGame TypesOfObjectsToSpawn { get; set; } = SpawnObjectsCatchGame.All;
+        
+        /// <summary>
+        /// Should the game use smoothed input.
+        /// </summary>
+        public bool useSmoothedInput = false;
     }
 }

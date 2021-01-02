@@ -127,6 +127,7 @@ namespace ONCGM.Game {
             CurrentSession.MinijogoDestaSessao = GameManager.CurrentMinigame;
             CurrentSession.SelecaoDeMinijogos = GameManager.CurrentSettings.MinigamesToIncludeInSession;
             CurrentSession.TempoMinimoParaContarAcerto = GameManager.CurrentSettings.MinimumTimeToValidateInput;
+            CurrentSession.DeteccaoSuavizada = GameManager.CurrentSettings.useSmoothedInput;
 
             SaveSystem.LoadedData.SessoesDeJogo.Add(CurrentSession);
             SaveSystem.SaveGameToFile();

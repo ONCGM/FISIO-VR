@@ -106,5 +106,10 @@ namespace ONCGM.Game {
         /// The average angle delta variation during the session.
         /// </summary>
         public float MediaDeInclinacao = 0f;
+
+        /// <summary>
+        /// If the game used smoothed detection for the input.
+        /// </summary>
+        public bool DeteccaoSuavizada;
     }
 }

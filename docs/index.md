@@ -2,7 +2,7 @@
 A principal função do jogo é de ajudar cadeirantes a exercitar o tronco e desenvolver um melhor equilíbrio na cadeira de rodas enquanto se divertem com um dos mini-jogos. O jogo se trata de uma compilação de mini-jogos, onde o jogador interage utilizando movimentos com o tronco. Sendo um conjunto de vários pequenos jogos, é possível um escopo escalável, baseado na demanda e necessidade do projeto. 
 Durante a primeira fase de desenvolvimento (até o final de 2020) foram produzidos 2 mini-jogos para o projeto. Atualmente o jogo está em processo de validação na [Universidade Feevale](feevale.br).
 
-[Screenshot 1](/docs/fisio_frames_%2021.png)
+![Screenshot 1](/docs/fisio_frames_%2021.png)
 *Fig. 1, do autor, cena de título do jogo.*
 
 ## Mini-jogos
@@ -21,7 +21,6 @@ Cada objeto vem em uma posição diferente, dependendo do movimento que será so
 
 O mini-jogo de cores segue a mesma lógica de detecção de movimento e configuração do mini-jogo de contar objetos, mas utiliza em conjunto um desafio cognitivo e de memória ao jogador. 
 O jogo apresenta uma direção em conjunto com uma cor e um som específico ao jogador. Se o jogador obter sucesso em executar o movimento solicitado, o jogo repete a direção anterior e adiciona um nova direção logo em seguida, necessitando assim que o jogador faça dois movimentos. 
-Até o momento em que o jogador errar três vezes consecutivas ou o tempo determinado acabar, o jogo adiciona cada vez mais direções a lista, assim aumentando a dificuldade a cada repetição, pois o jogador precisa lembrar da ordem em que precisa performar os movimentos e para qual direção.
 O número no centro da interface mostra a quantidade de erros que o jogador ainda tem disponível, se o número chegar a zero, o jogo terminará. A pontuação neste jogo funciona de uma maneira simples, onde cada acerto é um ponto.
 A dificuldade é elaborada pelo tempo limite para executar o movimento, onde somente depois do tempo limite passar, o jogo considera que o jogador errou. Este método permite que o jogador tente várias vezes o movimento em uma dificuldade menor, mas somente uma ou duas vezes com parâmetros mais difíceis. 
     
@@ -41,25 +40,52 @@ O equipamento de RV utilizado para este projeto foi o ‘Samsung Gear VR’, por
 ## Download
 
 O projeto não tem download público por o Gear VR ter sido descontinuado e estar em fase de testes e validação.
-Caso queira jogar, por favor entre em contato com alguma das pessoas listadas abaixo para saber mais sobre.
-Outra possibilidade é baixar o projeto e gerar uma build em sua máquina.
-*Deixo claro que mesmo havendo a possibilidade, tal procedimento requer conhecimentos avançados sobre RV e a Unity Engine.
-*Em baixar o projeto, gerar uma build e testar, estará assumindo toda e total responsabilidade por seu equipamento
-*e possíveis consequências sobre o uso do projeto. Assim ausentando completamente a Universidade, professores, desenvolvedores, artistas 
-*e todos os envolvidos com a produção deste jogo, também incluso as empresas (ex: Unity, Oculus e Github) os quais equipamentos
-*ou software foi utilizado no desenvolvimento. As quais não são filiadas ao projeto e têm seus respectivos direitos autorais, de propriedade e marca registrada.
+Caso queira jogar, por favor *entre em contato* com alguma das pessoas *listadas abaixo* para saber mais sobre.
 
+## Contato e Créditos
 
+### Desenvolvedor | Developer
+[Elias Pereira](twitter.com/_oncgm)
 
+### Orientação | Guidance
+[Marta Bez](mailto:martabez@gmail.com)
 
-## Créditos
+[Simone de Paula](mailto:sdpaula@feevale.br)
 
-
-## Contato
-[Elias Pereira (Desenvolvedor)](twitter.com/_oncgm)
-
-[Marta Bez (Orientadora)](mailto:martabez@gmail.com)
-
-[Simone de Paula (Orientadora)](mailto:sdpaula@feevale.br)
+### University
 
 [Universidade Feevale](feevale.br)
+
+### Assets
+
+**Skecthfab.com**
+Low Poly Forest Waterfall Scene by Art.Yan
+Cartoon Butterfly by jabrils
+Low Poly Helicopter by antonmoek
+
+**Keyboard Icon Sprites**
+"Those Awesome Guys"
+
+### Music
+
+Bensound.com
+
+### SFX
+
+**Freesound.org**
+Helicopter by Mings
+Wing flap by ani_music
+Waterfall by InspectorJ
+Dogs barking by BonnyOrbit
+Water fountain by BonnyOrbit
+City ambience by felix.blume
+
+*Sound files adapted to suit the game needs.*
+
+### Font
+
+Hack by Source Foundry Authors
+
+This work is licensed under a Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0) License. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/ or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+Este trabalho está licenciado sob uma Licença Creative Commons Atribuição-NãoComercial-CompartilhaIgual 4.0 Internacional (CC BY-NC-SA 4.0). Para ver uma cópia desta licença, visite https://creativecommons.org/licenses/by-nc-sa/4.0/.

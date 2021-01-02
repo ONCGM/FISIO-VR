@@ -1,4 +1,4 @@
-## Sobres
+## Sobre
 A principal função do jogo é de ajudar cadeirantes a exercitar o tronco e desenvolver um melhor equilíbrio na cadeira de rodas enquanto se divertem com um dos mini-jogos. O jogo se trata de uma compilação de mini-jogos, onde o jogador interage utilizando movimentos com o tronco. Sendo um conjunto de vários pequenos jogos, é possível um escopo escalável, baseado na demanda e necessidade do projeto. 
 Durante a primeira fase de desenvolvimento (até o final de 2020) foram produzidos 2 mini-jogos para o projeto. 
 *Atualmente o jogo está em processo de validação na [Universidade Feevale](https://feevale.br/).*
@@ -42,7 +42,7 @@ O equipamento de RV utilizado para este projeto foi o ‘Samsung Gear VR’, por
 ## Download
 
 O projeto não tem download público por o Gear VR ter sido descontinuado e estar em fase de testes e validação.
-Caso queira jogar, por favor *entre em contato* com alguma das pessoas *listadas abaixo* para saber mais sobre.
+Caso queira testar o projeto ou contribuir com o mesmo, por favor *entre em contato* com alguma das pessoas *listadas abaixo* para saber mais sobre.
 
 ## Contato e Créditos | Contact and Credits
 

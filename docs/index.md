@@ -3,7 +3,7 @@ A principal função do jogo é de ajudar cadeirantes a exercitar o tronco e des
 Durante a primeira fase de desenvolvimento (até o final de 2020) foram produzidos 2 mini-jogos para o projeto. 
 *Atualmente o jogo está em processo de validação na [Universidade Feevale](feevale.br).*
 
-<img src="/docs/fisio_frames_21.png" alt="hello" class="inline"/>
+<img src="/docs/fisio_frames_21.png"/>
 
 ## Mini-jogos
 
@@ -15,7 +15,7 @@ Todos os parâmetros dos mini-jogos são compartilhados, assim, a configuração
 
 #### Contar objetos
 
-<img src="/docs/Catch Game Gear VR.jpg" alt="hello" class="inline"/>
+<img src="/docs/Catch Game Gear VR.jpg"/>
 
 O objetivo do jogo é contar o maior número de objetos possível, ganhando pontos a cada objeto contado. A maneira de interação do jogador com os objetos é somente usando de movimentos do tronco, sob supervisão de um profissional de saúde, o jogador pode inclinar-se para uma das cinco posições determinadas pelo jogo. 
 Cada objeto vem em uma posição diferente, dependendo do movimento que será solicitado, em conjunto com uma seta para reforçar qual direção o jogador precisa se inclinar. Com o passar do tempo limite para fazer o movimento, a seta ficará vermelha. Quando isso acontecer, o objeto sai de cena e é considerado como erro e o jogador não recebe pontos.

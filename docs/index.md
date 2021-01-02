@@ -2,6 +2,9 @@
 A principal função do jogo é de ajudar cadeirantes a exercitar o tronco e desenvolver um melhor equilíbrio na cadeira de rodas enquanto se divertem com um dos mini-jogos. O jogo se trata de uma compilação de mini-jogos, onde o jogador interage utilizando movimentos com o tronco. Sendo um conjunto de vários pequenos jogos, é possível um escopo escalável, baseado na demanda e necessidade do projeto. 
 Durante a primeira fase de desenvolvimento (até o final de 2020) foram produzidos 2 mini-jogos para o projeto. Atualmente o jogo está em processo de validação na [Universidade Feevale](feevale.br).
 
+[Screenshot 1](/docs/fisio_frames_%2021.png)
+*Fig. 1, do autor, cena de título do jogo.*
+
 ## Mini-jogos
 ### Conceito e explanação
 
@@ -23,8 +26,34 @@ O número no centro da interface mostra a quantidade de erros que o jogador aind
 A dificuldade é elaborada pelo tempo limite para executar o movimento, onde somente depois do tempo limite passar, o jogo considera que o jogador errou. Este método permite que o jogador tente várias vezes o movimento em uma dificuldade menor, mas somente uma ou duas vezes com parâmetros mais difíceis. 
     
 ## Tecnologia
+### Dispositivos móveis
+
+O dispositivo móvel, neste caso um celular, utilizado durante o desenvolvimento e testes do projeto, foi o ‘Samsung Galaxy S7’. O jogo também é compatível com todos os demais dispositivos móveis suportados pelo ‘Gear VR’.
+
+### Engine e Softwares utilizados
+
+A ‘game engine’, (do Inglês, motor de jogos), escolhida para uso no projeto foi a ‘Unity’. Junto com a engine, uma ‘IDE’ (do Inglês, ambiente de desenvolvimento integrado) é necessária. A decisão foi por preferência pessoal do desenvolvedor, assim a ‘IDE JetBrains Rider’ foi escolhida.
+
+### Óculos de realidade virtual.
+
+O equipamento de RV utilizado para este projeto foi o ‘Samsung Gear VR’, por ser portátil, mais acessível que as plataformas de realidade virtual de computadores e não necessitar de cabos durante o uso.
 
 ## Download
+
+O projeto não tem download público por o Gear VR ter sido descontinuado e estar em fase de testes e validação.
+Caso queira jogar, por favor entre em contato com alguma das pessoas listadas abaixo para saber mais sobre.
+Outra possibilidade é baixar o projeto e gerar uma build em sua máquina.
+*Deixo claro que mesmo havendo a possibilidade, tal procedimento requer conhecimentos avançados sobre RV e a Unity Engine.
+*Em baixar o projeto, gerar uma build e testar, estará assumindo toda e total responsabilidade por seu equipamento
+*e possíveis consequências sobre o uso do projeto. Assim ausentando completamente a Universidade, professores, desenvolvedores, artistas 
+*e todos os envolvidos com a produção deste jogo, também incluso as empresas (ex: Unity, Oculus e Github) os quais equipamentos
+*ou software foi utilizado no desenvolvimento. As quais não são filiadas ao projeto e têm seus respectivos direitos autorais, de propriedade e marca registrada.
+
+
+
+
+## Créditos
+
 
 ## Contato
 [Elias Pereira (Desenvolvedor)](twitter.com/_oncgm)

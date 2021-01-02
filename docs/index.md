@@ -63,7 +63,9 @@ Caso queira jogar, por favor *entre em contato* com alguma das pessoas *listadas
 **Skecthfab.com**
 
 Low Poly Forest Waterfall Scene by Art.Yan
+
 Cartoon Butterfly by jabrils
+
 Low Poly Helicopter by antonmoek
 
 **Keyboard Icon Sprites**
@@ -77,13 +79,16 @@ Bensound.com
 ### Efeitos Sonoros | SFX 
 
 **Freesound.org**
+
 Helicopter by Mings
+
 Wing flap by ani_music
 
 Waterfall by InspectorJ
-Dogs barking by BonnyOrbit
 
+Dogs barking by BonnyOrbit
 Water fountain by BonnyOrbit
+
 City ambience by felix.blume
 
 *Sound files adapted to suit the game needs.*

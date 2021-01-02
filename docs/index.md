@@ -18,7 +18,7 @@ Cada objeto vem em uma posição diferente, dependendo do movimento que será so
 
 #### Cores
 
-<img src="https://github.com/ONCGM/Fisio-VR/blob/master/docs/Colors%20Dashboard.png" alt="hello" class="inline">
+<img src="https://github.com/ONCGM/fisio-vr/blob/master/docs/Colors%20Dashboard.png" alt="hello" class="inline">
 
 O mini-jogo de cores segue a mesma lógica de detecção de movimento e configuração do mini-jogo de contar objetos, mas utiliza em conjunto um desafio cognitivo e de memória ao jogador. 
 O jogo apresenta uma direção em conjunto com uma cor e um som específico ao jogador. Se o jogador obter sucesso em executar o movimento solicitado, o jogo repete a direção anterior e adiciona um nova direção logo em seguida, necessitando assim que o jogador faça dois movimentos. 

@@ -3,7 +3,7 @@ A principal função do jogo é de ajudar cadeirantes a exercitar o tronco e des
 Durante a primeira fase de desenvolvimento (até o final de 2020) foram produzidos 2 mini-jogos para o projeto. Atualmente o jogo está em processo de validação na [Universidade Feevale](feevale.br).
 
 ![Screenshot](/docs/fisio_frames_%2021.png)
-Format: ![Fig. 1, do autor, cena de título do jogo.](https://feevale.br)
+
 
 ## Mini-jogos
 

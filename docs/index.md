@@ -2,7 +2,7 @@
 A principal função do jogo é de ajudar cadeirantes a exercitar o tronco e desenvolver um melhor equilíbrio na cadeira de rodas enquanto se divertem com um dos mini-jogos. O jogo se trata de uma compilação de mini-jogos, onde o jogador interage utilizando movimentos com o tronco. Sendo um conjunto de vários pequenos jogos, é possível um escopo escalável, baseado na demanda e necessidade do projeto. 
 Durante a primeira fase de desenvolvimento (até o final de 2020) foram produzidos 2 mini-jogos para o projeto. Atualmente o jogo está em processo de validação na [Universidade Feevale](feevale.br).
 
-<img src="docs/fisio_frames_%2021.png" alt="hello" class="inline"/>
+<img src="/docs/fisio_frames_%2021.png" alt="hello" class="inline"/>
 
 ## Mini-jogos
 

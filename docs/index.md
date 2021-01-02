@@ -3,8 +3,6 @@ A principal função do jogo é de ajudar cadeirantes a exercitar o tronco e des
 Durante a primeira fase de desenvolvimento (até o final de 2020) foram produzidos 2 mini-jogos para o projeto. 
 *Atualmente o jogo está em processo de validação na [Universidade Feevale](https://feevale.br/).*
 
-<img src="https://github.com/ONCGM/Fisio-VR/docs/fisio_frames_21.png" class="img-responsive" alt=""> 
-
 ## Mini-jogos
 
 ### Conceito e explanação
@@ -15,14 +13,12 @@ Todos os parâmetros dos mini-jogos são compartilhados, assim, a configuração
 
 #### Contar objetos
 
-![Test](/docs/Catch%Game%Gear%VR.jpg)
-
 O objetivo do jogo é contar o maior número de objetos possível, ganhando pontos a cada objeto contado. A maneira de interação do jogador com os objetos é somente usando de movimentos do tronco, sob supervisão de um profissional de saúde, o jogador pode inclinar-se para uma das cinco posições determinadas pelo jogo. 
 Cada objeto vem em uma posição diferente, dependendo do movimento que será solicitado, em conjunto com uma seta para reforçar qual direção o jogador precisa se inclinar. Com o passar do tempo limite para fazer o movimento, a seta ficará vermelha. Quando isso acontecer, o objeto sai de cena e é considerado como erro e o jogador não recebe pontos.
 
 #### Cores
 
-<img src="https://github.com/ONCGM/Fisio-VR/blob/master/docs/Colors%20Dashboard.png" alt="hello" class="inline"/>
+<img src="https://github.com/ONCGM/Fisio-VR/blob/master/docs/Colors%20Dashboard.png" alt="hello" class="inline">
 
 O mini-jogo de cores segue a mesma lógica de detecção de movimento e configuração do mini-jogo de contar objetos, mas utiliza em conjunto um desafio cognitivo e de memória ao jogador. 
 O jogo apresenta uma direção em conjunto com uma cor e um som específico ao jogador. Se o jogador obter sucesso em executar o movimento solicitado, o jogo repete a direção anterior e adiciona um nova direção logo em seguida, necessitando assim que o jogador faça dois movimentos. 

@@ -70,7 +70,7 @@ namespace ONCGM.VR.VRButtons {
         [ContextMenu("Update State")]
         protected virtual void UpdateState() {
             AnimateClick();
-            uiText.text = string.Concat(textToDisplayBeforeState, Environment.NewLine, SpawnDirectionCatchGameExtension.ToString(ToggleState));
+            uiText.text = string.Concat(textToDisplayBeforeState, Environment.NewLine, SpawnDirectionExtension.ToString(ToggleState));
         }
         
         /// <summary>

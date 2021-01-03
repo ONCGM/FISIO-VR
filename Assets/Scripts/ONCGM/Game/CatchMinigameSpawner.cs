@@ -100,7 +100,7 @@ namespace ONCGM.Game {
                     }
 
                     if(CheckIfSpawnIsAvailable(nextSpawnPosition)) CatchMinigameController.CurrentSession.PosicaoDeCadaMovimento.Add(
-                        SpawnDirectionCatchGameExtension.ToString(nextSpawnPosition));
+                        SpawnDirectionExtension.ToString(nextSpawnPosition));
                 } else {
                     StopCoroutine(nameof(SpawnObjects));
                     StartCoroutine(nameof(SpawnObjects));

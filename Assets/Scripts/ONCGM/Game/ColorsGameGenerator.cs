@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using ONCGM.Utility;
@@ -6,6 +7,7 @@ using ONCGM.VR.VREnums;
 using ONCGM.VR.VRInput;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace ONCGM.Game {
     public class ColorsGameGenerator : MonoBehaviour {
@@ -16,11 +18,15 @@ namespace ONCGM.Game {
         [SerializeField, Range(0f, 1f)] private float backgroundMaxAlpha = 0.5f;
         [SerializeField] private GameObject hitCanvasPrefab;
         [SerializeField] private string hitCanvasPrefabPath = "Prefabs/UI/Hit or Miss Canvas";
+
+        [Header("Audio Clips")] 
+        [SerializeField] private AudioClip upClip;
+        [SerializeField] private AudioClip downClip, leftClip, rightClip;
+        private List<AudioClip> directionClips = new List<AudioClip>();
         
         // Components
         private TextMeshPro inputText;
-        private TextMeshPro mistakesText;
-        private Animator mistakesTextAnimator;
+        private AudioSource aSource;
         
         // Sprite lists
         private readonly List<SpriteRenderer> mainArrowSprites = new List<SpriteRenderer>();
@@ -34,6 +40,15 @@ namespace ONCGM.Game {
         private List<SpawnDirection> generatedInputs = new List<SpawnDirection>();
         private List<SpawnDirection> playerInputs = new List<SpawnDirection>();
         
+        /// <summary>
+        /// The inputs the player has done successfully in this round.
+        /// </summary>
+        public List<SpawnDirection> PlayerInputs => playerInputs;
+        
+        // Events.
+        public Action<SpawnDirection> SuccessfulInput;
+        public Action ClearedInputs;
+
         // Variables
         private SpriteRenderer backgroundSprite;
         private WaitForFixedUpdate waitFixedUpdate;
@@ -70,16 +85,17 @@ namespace ONCGM.Game {
         private void Start() {
             // Get components and references.
             var childCount = transform.childCount;
-            
-            inputText = transform.GetChild(childCount - 2).GetComponent<TextMeshPro>();
-            
-            mistakesText = transform.GetChild(childCount - 1).GetComponent<TextMeshPro>();
 
-            mistakesTextAnimator = mistakesText.gameObject.GetComponent<Animator>();
+            aSource = GetComponent<AudioSource>();
+            
+            // Has to be in the same order as the SpawnDirection enum.
+            directionClips = new List<AudioClip>{upClip, downClip, leftClip, rightClip};
+            
+            inputText = transform.GetChild(childCount - 1).GetComponent<TextMeshPro>();
             
             backgroundSprite = transform.GetChild(0).GetComponentInChildren<SpriteRenderer>();
             
-            for(var i = 1; i < childCount - 2; i++) {
+            for(var i = 1; i < childCount - 1; i++) {
                 mainArrowSprites.Add(transform.GetChild(i).GetComponent<SpriteRenderer>());
                 mainArrowSprites.Add(transform.GetChild(i).GetChild(0).GetComponent<SpriteRenderer>());
                 
@@ -133,9 +149,6 @@ namespace ONCGM.Game {
                                                                (float) GameManager.CurrentSettings.GameDifficulty / (float) GameDifficulty.Impossible));
             maxAllowedInputMistakes = allowedInputMistakes;
 
-            // Texts.
-            mistakesText.text = allowedInputMistakes.ToString();
-            
             // 'Wait for' initialization.
             waitFixedUpdate = new WaitForFixedUpdate();
             waitForSecondsAnimation = new WaitForSeconds(minimumTimeInBetweenAnimations);
@@ -168,8 +181,7 @@ namespace ONCGM.Game {
                 spritesAlpha += fadeInAnimationSpeed;
 
                 inputText.alpha = spritesAlpha;
-                mistakesText.alpha = spritesAlpha;
-                
+
                 var color = backgroundSprite.color;
                 color = new Color(color.r, color.g, color.b, spritesAlpha);
                 backgroundSprite.color = color;
@@ -197,7 +209,6 @@ namespace ONCGM.Game {
             while(spritesAlpha > 0f) {
                 spritesAlpha -= fadeInAnimationSpeed * 2f;
                 inputText.alpha = spritesAlpha;
-                mistakesText.alpha = spritesAlpha;
                 
                 var color = backgroundSprite.color;
                 color = new Color(color.r, color.g, color.b, spritesAlpha);
@@ -246,27 +257,21 @@ namespace ONCGM.Game {
                 case InputDirection.Centered:
                     return;
             }
-            
-            // Check if the player has lost the game.
-            if(allowedInputMistakes <= 0) {
-                //ColorsMinigameController.EndMinigame();
-            }
-            
+
             // Check if the player has gotten the input correctly.
             if(convertedDirection == generatedInputs[Mathf.Max(0, playerInputs.Count)]) {
                 // Success.
                 playerInputs.Add(convertedDirection);
                 ColorsMinigameController.CurrentSession.PontuacaoDaSessao += generatedInputs.Count;
                 ColorsMinigameController.CurrentSession.QuantidadeDeAcertos++;
-                GameObject go = Instantiate(hitCanvasPrefab, transform.position, transform.rotation);
+                var go = Instantiate(hitCanvasPrefab, transform.position, transform.rotation);
                 go.GetComponent<HitFeedbackUi>().PickRandomText(true);
-                go.transform.localScale = Vector3.one * 5;
+                go.transform.localScale = Vector3.one * 4;
+                SuccessfulInput?.Invoke(convertedDirection);
             } else {
                 // Miss.
                 ColorsMinigameController.CurrentSession.QuantidadeDeErros++;
                 allowedInputMistakes--;
-                mistakesText.text = allowedInputMistakes.ToString();
-                mistakesTextAnimator.SetTrigger(Fade);
                 GameObject go = Instantiate(hitCanvasPrefab, transform.position, transform.rotation);
                 go.GetComponent<HitFeedbackUi>().PickRandomText(false);
                 go.transform.localScale = Vector3.one * 5;
@@ -279,8 +284,6 @@ namespace ONCGM.Game {
             allowedInputMistakes = maxAllowedInputMistakes;
             playerInputs.Clear();
             playerInputs.TrimExcess();
-            mistakesText.text = allowedInputMistakes.ToString();
-            mistakesTextAnimator.SetTrigger(FadeGreen);
             
             InputGenerateMode = true;
             
@@ -294,6 +297,8 @@ namespace ONCGM.Game {
             yield return waitForSecondsRounds;
 
             waitingForRecenter = false;
+            
+            ClearedInputs?.Invoke();
             
             StartCoroutine(AnimateColorSequence(GenerateInputs()));
         }
@@ -311,7 +316,7 @@ namespace ONCGM.Game {
             
             generatedInputs = new List<SpawnDirection> {input};
             
-            ColorsMinigameController.CurrentSession.PosicaoDeCadaMovimento.Add(SpawnDirectionCatchGameExtension.ToString(input));
+            ColorsMinigameController.CurrentSession.PosicaoDeCadaMovimento.Add(SpawnDirectionExtension.ToString(input));
             
             return generatedInputs;
         }
@@ -361,11 +366,11 @@ namespace ONCGM.Game {
                                                                    direction == SpawnDirection.Left ||
                                                                    direction == SpawnDirection.Right ||
                                                                    direction == SpawnDirection.Up)) {
-                inputText.text = SpawnDirectionCatchGameExtension.ToString(direction);
+                inputText.text = SpawnDirectionExtension.ToString(direction);
                 
                 if(!ColorsMinigameController.HasStarted) yield break;
                     
-                yield return AnimateColorFlash(GetRenderersBasedOnDirection(direction));
+                yield return AnimateColorFlash(GetRenderersBasedOnDirection(direction), direction);
                 yield return waitForSecondsAnimation;
             }
 
@@ -376,7 +381,7 @@ namespace ONCGM.Game {
         /// <summary>
         /// Animates the arrow flashing once using the sprite renderer alpha.
         /// </summary>
-        private IEnumerator AnimateColorFlash(IReadOnlyCollection<SpriteRenderer> sprites) {
+        private IEnumerator AnimateColorFlash(IReadOnlyCollection<SpriteRenderer> sprites, SpawnDirection direction) {
             if(!ColorsMinigameController.HasStarted) yield break;
             
             var alpha = 0f;
@@ -395,6 +400,9 @@ namespace ONCGM.Game {
                 yield return waitFixedUpdate;
             }
             
+            // Play SFX.
+            aSource.PlayOneShot(directionClips[(int) direction]);
+
             while(alpha > 0f) {
                 alpha -= colorFlashAnimationSpeed;
                 inputText.alpha = alpha;

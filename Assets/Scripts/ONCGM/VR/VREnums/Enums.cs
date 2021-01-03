@@ -57,9 +57,9 @@ namespace ONCGM.VR.VREnums {
     }
     
     /// <summary>
-    /// Extends the enum to return translated strings for UI use.  Catch Game Enum.
+    /// Extends the enum to return translated strings for UI use.
     /// </summary>
-    public static class SpawnDirectionCatchGameExtension {
+    public static class SpawnDirectionExtension {
         public static string ToString(this SpawnDirection self) {
             // ReSharper disable once ConvertSwitchStatementToSwitchExpression
             switch(self) {

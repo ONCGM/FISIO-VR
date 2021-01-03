@@ -85,7 +85,7 @@ namespace ONCGM.Game {
         /// <summary>
         /// What difficulty should the game be. This will be set on the game setup scene.
         /// </summary>
-        public GameDifficulty GameDifficulty { get; set; } = GameDifficulty.Normal;
+        public GameDifficulty GameDifficulty { get; set; } = GameDifficulty.Hard;
         
         /// <summary>
         /// List of minigames to play in the session. These will be chosen on the game setup scene.

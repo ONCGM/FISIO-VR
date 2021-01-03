@@ -29,7 +29,9 @@ namespace ONCGM.Game {
         private float colorTransitionAmount = 0f;
         private WaitForEndOfFrame waitForFrame;
         private WaitForSeconds waitForSeconds;
+        #pragma warning disable 414
         private bool isColliding;
+        #pragma warning restore 414
         private bool checkInput;
         private static readonly int DirectionY = Animator.StringToHash("DirectionY");
         private static readonly int DirectionX = Animator.StringToHash("DirectionX");

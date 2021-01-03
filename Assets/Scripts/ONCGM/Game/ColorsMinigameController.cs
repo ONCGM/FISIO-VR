@@ -34,15 +34,15 @@ namespace ONCGM.Game {
         /// <summary>
         /// Called when the minigame starts.
         /// </summary>
-        public static UnityEvent OnMinigameBegun;
+        public static UnityEvent OnMinigameBegun = new UnityEvent();
         /// <summary>
         /// Called when the minigame has ended.
         /// </summary>
-        public static UnityEvent OnMinigameEnded;
+        public static UnityEvent OnMinigameEnded = new UnityEvent();
         /// <summary>
         /// Called every in-game second.
         /// </summary>
-        public static UnityEvent Tick;
+        public static UnityEvent Tick = new UnityEvent();
         #pragma warning restore 0649
 
         #region Unity Events and Functions
@@ -50,9 +50,6 @@ namespace ONCGM.Game {
         /// Sets up the class and the public events up.
         /// </summary>
         private void Awake() {
-            OnMinigameBegun = new UnityEvent();
-            OnMinigameEnded = new UnityEvent();
-            Tick = new UnityEvent();
             waitASecond = new WaitForSecondsRealtime(1);
             if(GameObject.FindObjectsOfType<ColorsMinigameController>().Length > 1) Destroy(this);
         }

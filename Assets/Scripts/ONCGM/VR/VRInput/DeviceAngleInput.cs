@@ -40,9 +40,11 @@ namespace ONCGM.VR.VRInput {
         private static bool hasAccelerometer = false;
 
         // Values for calibrating the game.
-        // Center rotation to be used as a reference point.
-        private static Quaternion centerRotation = Quaternion.identity;
-        
+        /// <summary>
+        /// Center rotation to be used as a reference point.
+        /// </summary>
+        public static Quaternion CenterRotation { get; private set;  } = Quaternion.identity;
+
         /// <summary>
         /// The angle difference at any given time of the device compared to the centered position.
         /// </summary>
@@ -199,7 +201,7 @@ namespace ONCGM.VR.VRInput {
             averagedAcceleration = new Vector3(accelerationSamples.Average(x=>x.x),
                                                accelerationSamples.Average(x=>x.y),
                                                accelerationSamples.Average(x=>x.z));
-            centerRotation = Input.gyro.attitude;
+            CenterRotation = Input.gyro.attitude;
             currentDirection = InputDirection.Centered;
             OnRecenter.Invoke();
         }
@@ -208,7 +210,7 @@ namespace ONCGM.VR.VRInput {
         /// Resets the calibration of the device.
         /// </summary>
         private void ResetCalibration() {
-            centerRotation = Quaternion.Euler(Vector3.zero);
+            CenterRotation = Quaternion.Euler(Vector3.zero);
             accelerationSamples.Clear();
             averagedAcceleration = Vector3.zero;
             CalibratedAcceleration = Vector3.zero;
@@ -222,7 +224,7 @@ namespace ONCGM.VR.VRInput {
         /// Uses the devices sensors to detect movement and set them as a input and sets the current direction enum accordingly.
         /// </summary>
         private void InputDetection() {
-            AngleDifferenceBetweenCenterPositionAndInput = Quaternion.Angle(centerRotation, Input.gyro.attitude);
+            AngleDifferenceBetweenCenterPositionAndInput = Quaternion.Angle(CenterRotation, Input.gyro.attitude);
             
             if(CheckCenterTolerance() && !alreadyCalculatedADirection) {
                 alreadyCalculatedADirection = true;
@@ -294,6 +296,7 @@ namespace ONCGM.VR.VRInput {
                                                                  InputDirection.Centered));
 
             if(inputDir != CurrentDirection) OnInputChange.Invoke(inputDir);
+            if(Input.GetKeyDown(KeyCode.Escape)) GameManager.PauseGame(!GameManager.IsPaused);
         }
         
         #endregion
@@ -321,7 +324,7 @@ namespace ONCGM.VR.VRInput {
         private bool CheckCenterTolerance() {
             return !CheckAccelerometerTolerancePositive(Input.acceleration.y) &&
                    !CheckAccelerometerTolerancePositive(Input.acceleration.z) &&
-                   Quaternion.Angle(centerRotation, Input.gyro.attitude) <= minimumAngle;
+                   Quaternion.Angle(CenterRotation, Input.gyro.attitude) <= minimumAngle;
         }
 
         #endregion

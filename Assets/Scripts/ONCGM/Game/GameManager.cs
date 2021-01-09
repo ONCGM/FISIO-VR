@@ -38,7 +38,7 @@ namespace ONCGM.Game {
         /// <summary>
         /// The minigame that the user is currently playing.
         /// </summary>
-        public static Minigames CurrentMinigame { get; private set; } = Minigames.ColorsGame;
+        public static Minigames CurrentMinigame { get; private set; } = Minigames.CatchGame;
 
         /// <summary>
         /// Used to avoid double loading a scene.

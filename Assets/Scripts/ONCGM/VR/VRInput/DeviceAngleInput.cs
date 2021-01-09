@@ -77,6 +77,14 @@ namespace ONCGM.VR.VRInput {
             get => currentDirection;
             private set => currentDirection = value;
         }
+        
+        private static Vector2 inputDirectionVector = new Vector2();
+
+        /// <summary>
+        /// Input direction converted into a vector for slightly more precise uses.
+        /// X is left (+) and right (-). Y is front (-) and back (+). 
+        /// </summary>
+        public static Vector2 InputDirectionVector { get; } = new Vector2();
 
         /// <summary>
         /// Used to calculate input validation.
@@ -279,6 +287,7 @@ namespace ONCGM.VR.VRInput {
             }
             
             lastDirection = currentDirection;
+            inputDirectionVector = new Vector2((smoothDetection ? CalibratedAcceleration.y : Input.acceleration.y), (smoothDetection ? CalibratedAcceleration.z : Input.acceleration.z));
             alreadyCalculatedADirection = false;
         }
 

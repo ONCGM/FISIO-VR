@@ -375,8 +375,57 @@ namespace ONCGM.Game {
             }
 
             InputGenerateMode = false;
+
+            StartCoroutine(nameof(AnimatePositionProximity));
         }
         
+        /// <summary>
+        /// Animates how close the player in to an input position in the colors display.
+        /// Should only work when not generating input.
+        /// </summary>
+        private IEnumerator AnimatePositionProximity() {
+            var upRenderers = GetRenderersBasedOnDirection(SpawnDirection.Up);
+            var downRenderers = GetRenderersBasedOnDirection(SpawnDirection.Down);
+            var leftRenderers = GetRenderersBasedOnDirection(SpawnDirection.Left);
+            var rightRenderers = GetRenderersBasedOnDirection(SpawnDirection.Right);
+
+            while(!InputGenerateMode) {
+                var alpha = Mathf.Lerp(0,1f, Mathf.InverseLerp(0f, 1f, DeviceAngleInput.InputDirectionVector.y));
+                Color color;
+                
+                foreach(var sprite in upRenderers) {
+                    color = sprite.color;
+                    color = new Color(color.r, color.g, color.b, alpha);
+                    sprite.color = color;
+                }
+                
+                alpha = Mathf.Lerp(0,1f, Mathf.InverseLerp(-1f, 0f, DeviceAngleInput.InputDirectionVector.y));
+
+                foreach(var sprite in downRenderers) {
+                    color = sprite.color;
+                    color = new Color(color.r, color.g, color.b, alpha);
+                    sprite.color = color;
+                }
+                
+                alpha = Mathf.Lerp(0,1f, Mathf.InverseLerp(0f, 1f, DeviceAngleInput.InputDirectionVector.x));
+
+                foreach(var sprite in leftRenderers) {
+                    color = sprite.color;
+                    color = new Color(color.r, color.g, color.b, alpha);
+                    sprite.color = color;
+                }
+                
+                alpha = Mathf.Lerp(0,1f, Mathf.InverseLerp(-1f, 0f, DeviceAngleInput.InputDirectionVector.x));
+
+                foreach(var sprite in rightRenderers) {
+                    color = sprite.color;
+                    color = new Color(color.r, color.g, color.b, alpha);
+                    sprite.color = color;
+                }
+                
+                yield return waitFixedUpdate;
+            }
+        }
         
         /// <summary>
         /// Animates the arrow flashing once using the sprite renderer alpha.

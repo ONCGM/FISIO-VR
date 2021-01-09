@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2079804399945839932, guid: 053c8862e40856d4f972f7aaaa5581f7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2686891293618391144, guid: 053c8862e40856d4f972f7aaaa5581f7,
         type: 3}
       propertyPath: m_Name
@@ -67,31 +72,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4462437094025349729, guid: 053c8862e40856d4f972f7aaaa5581f7,
-        type: 3}
-      propertyPath: triangleArrows.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4462437094025349729, guid: 053c8862e40856d4f972f7aaaa5581f7,
-        type: 3}
-      propertyPath: directionToCheckInput
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4462437094025349729, guid: 053c8862e40856d4f972f7aaaa5581f7,
-        type: 3}
-      propertyPath: triangleArrows.Array.data[0]
-      value: 
-      objectReference: {fileID: 6262216488043799112}
-    - target: {fileID: 4462437094025349729, guid: 053c8862e40856d4f972f7aaaa5581f7,
-        type: 3}
-      propertyPath: triangleArrows.Array.data[1]
-      value: 
-      objectReference: {fileID: 4313238584025785661}
-    - target: {fileID: 2079804399945839932, guid: 053c8862e40856d4f972f7aaaa5581f7,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3804540896258391193, guid: 053c8862e40856d4f972f7aaaa5581f7,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -136,6 +116,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -150
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462437094025349729, guid: 053c8862e40856d4f972f7aaaa5581f7,
+        type: 3}
+      propertyPath: triangleArrows.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462437094025349729, guid: 053c8862e40856d4f972f7aaaa5581f7,
+        type: 3}
+      propertyPath: directionToCheckInput
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4462437094025349729, guid: 053c8862e40856d4f972f7aaaa5581f7,
+        type: 3}
+      propertyPath: triangleArrows.Array.data[0]
+      value: 
+      objectReference: {fileID: 6262216488043799112}
+    - target: {fileID: 4462437094025349729, guid: 053c8862e40856d4f972f7aaaa5581f7,
+        type: 3}
+      propertyPath: triangleArrows.Array.data[1]
+      value: 
+      objectReference: {fileID: 4313238584025785661}
+    - target: {fileID: 6535126131052879648, guid: 053c8862e40856d4f972f7aaaa5581f7,
+        type: 3}
+      propertyPath: directionToCheck
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9063612000168539724, guid: 053c8862e40856d4f972f7aaaa5581f7,
         type: 3}

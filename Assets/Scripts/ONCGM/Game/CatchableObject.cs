@@ -36,7 +36,7 @@ namespace ONCGM.Game {
         private static readonly int DirectionY = Animator.StringToHash("DirectionY");
         private static readonly int DirectionX = Animator.StringToHash("DirectionX");
         private static readonly int Exit = Animator.StringToHash("Exit");
-        private Color initialMaterialColor = Color.white;
+        private readonly Color initialMaterialColor = Color.white;
         private SpriteRenderer[] spriteRenderers;
         #pragma warning restore 0649
         
@@ -103,9 +103,12 @@ namespace ONCGM.Game {
             DOVirtual.Float(0f, 1f, ((GameManager.CurrentSettings.MinimumTimeToValidateInput + AmountOfTimeToAccountForDifficulty) - (int) GameManager.CurrentSettings.GameDifficulty), 
                             value => colorTransitionAmount = value);
             StartCoroutine(nameof(LerpMaterialColor));
+            
             foreach(var triangle in triangleArrows) {
                 triangle.SetActive(true);
             }
+
+            GetComponentInChildren<CatchGameProximityArrows>().DisplayProximity();
         }
 
         /// <summary>
@@ -115,6 +118,7 @@ namespace ONCGM.Game {
             anim.SetTrigger(Exit);
             arrowAnim.SetTrigger(Exit);
             foreach(var triangle in triangleArrows) triangle.SetActive(false);
+            GetComponentInChildren<CatchGameProximityArrows>().StopDisplaying();
         }
         
         /// <summary>

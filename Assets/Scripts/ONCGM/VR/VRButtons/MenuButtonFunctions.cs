@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections;
+using DG.Tweening;
+using UnityEngine;
 using UnityEngine.Audio;
 using ONCGM.Game;
 using ONCGM.Utility;
@@ -76,6 +79,36 @@ namespace ONCGM.VR.VRButtons {
         }
         
         /// <summary>
+        /// Loads the game scene.
+        /// </summary>
+        [ContextMenu("Load Game Delayed")]
+        public void LoadGameSceneDelayed() {
+            UiAudioHandler.PlayClip(UiAudioClips.Click);
+            GameManager.PauseGame(false);
+            FindObjectOfType<LoadingAnimation>().StartAnimation();
+            var canvas = GetComponent<CanvasGroup>();
+
+            canvas.DOFade(0f, 1f);
+            canvas.interactable = false;
+            
+            StartCoroutine(nameof(LoadDelay));
+        }
+        
+        /// <summary>
+        /// Delays the loading for a second or two to allow the player to look
+        /// back to the center of the screen and avoid needing to recalibrate.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator LoadDelay() {
+            yield return new WaitForSeconds(2f);
+            
+            FindObjectOfType<LoadingAnimation>().StopAnimation();
+            yield return new WaitForSeconds(0.7f);
+            
+            GameManager.LoadScene(GameManager.MinigamesToLoad(), LoadSceneMode.Single);
+        }
+        
+        /// <summary>
         /// Loads the game setup scene.
         /// </summary>
         [ContextMenu("Load Game Setup")]
@@ -124,13 +157,6 @@ namespace ONCGM.VR.VRButtons {
             }
         }
 
-        /// <summary>
-        /// Toggles the playing position to be seated or standing.
-        /// </summary>
-        public void TogglePlayingPosition() {
-            //SaveSystem.LoadedData.isStanding = ;
-        }
-    
         /// <summary>
         /// Changes the game difficulty to the next state then starts again.
         /// </summary>
@@ -206,15 +232,36 @@ namespace ONCGM.VR.VRButtons {
         /// Changes the types of objects that are going to be used in the catch minigame.
         /// </summary>
         public void ChangeMinigamesInSession() {
-            if(GameManager.CurrentSettings.MinigamesToIncludeInSession != Minigames.All) {
-                GameManager.CurrentSettings.MinigamesToIncludeInSession =
-                    (Minigames) GameManager.CurrentSettings.MinigamesToIncludeInSession + 1;
-            } else {
-                GameManager.CurrentSettings.MinigamesToIncludeInSession = Minigames.CatchGame;
+            switch(GameManager.CurrentSettings.MinigamesToIncludeInSession) {
+                case Minigames.CatchGame:
+                    GameManager.CurrentSettings.MinigamesToIncludeInSession = Minigames.ColorsGame;
+                    break;
+                case Minigames.ColorsGame:
+                    GameManager.CurrentSettings.MinigamesToIncludeInSession = Minigames.CatchAndColors;
+                    break;
+                case Minigames.FlyingGame:
+                    GameManager.CurrentSettings.MinigamesToIncludeInSession = Minigames.CatchAndColors;
+                    break;
+                case Minigames.CatchAndColors:
+                    GameManager.CurrentSettings.MinigamesToIncludeInSession = Minigames.All;
+                    break;
+                case Minigames.CatchAndFlying:
+                    GameManager.CurrentSettings.MinigamesToIncludeInSession = Minigames.All;
+                    break;
+                case Minigames.ColorsAndFlying:
+                    GameManager.CurrentSettings.MinigamesToIncludeInSession = Minigames.All;
+                    break;
+                case Minigames.All:
+                    GameManager.CurrentSettings.MinigamesToIncludeInSession = Minigames.CatchGame;
+                    break;
+                case Minigames.Invalid:
+                    GameManager.CurrentSettings.MinigamesToIncludeInSession = Minigames.CatchGame;
+                    break;
+                default:
+                    GameManager.CurrentSettings.MinigamesToIncludeInSession = Minigames.CatchGame;
+                    break;
             }
         }
-        
-        
         #endregion
     }
 }

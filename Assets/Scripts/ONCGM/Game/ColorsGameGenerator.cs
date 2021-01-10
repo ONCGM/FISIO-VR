@@ -167,8 +167,8 @@ namespace ONCGM.Game {
         /// Starts a coroutine that fades out the color wheel sprites.
         /// </summary>
         private void FadeOutSprites() {
+            StopAllCoroutines();
             StartCoroutine(nameof(FadeOut));
-            StopCoroutine(nameof(AnimateColorSequence));
         }
 
         /// <summary>

@@ -144,16 +144,7 @@ namespace ONCGM.VR.VRInput {
         /// Automatically detects the first center point for tracking and sets up the detection type or displays error message if unsupported.
         /// </summary>
         private void Start() {
-            // Whenever doing a build after having implemented the closing dialog. uncomment lines in method.
-            if(hasGyro && hasAccelerometer) {
-                movementDetectionType = InputDetection;
-            } else if(!hasGyro && hasAccelerometer) {
-                movementDetectionType = InputDetection;
-                //DisplayUnsupportedWarningMessage();
-            } else {
-                movementDetectionType = InputDetection;
-                //DisplayUnsupportedWarningMessage();
-            }
+            movementDetectionType = InputDetection;
 
             GrabSettingsFromGameManager();
             StartTracking();
@@ -358,14 +349,6 @@ namespace ONCGM.VR.VRInput {
                     break;
             }
         }
-        
-        /// <summary>
-        /// Triggers a error message if the device is not supported. 
-        /// </summary>
-        private void DisplayUnsupportedWarningMessage() {
-            throw new NotImplementedException("This should display and error and then quit the app.");
-        }
-
         #endregion
     }
 }

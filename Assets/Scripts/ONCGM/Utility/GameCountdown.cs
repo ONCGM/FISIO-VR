@@ -6,6 +6,7 @@ using DG.Tweening;
 using ONCGM;
 using ONCGM.Game;
 using ONCGM.VR.VREnums;
+using ONCGM.VR.VRInput;
 using TMPro;
 
 namespace ONCGM.Utility {
@@ -15,7 +16,7 @@ namespace ONCGM.Utility {
     public class GameCountdown : MonoBehaviour {
         #pragma warning disable 0649
         [Header("Settings")]
-        [SerializeField, Range(1, 5)] private int countdownTime = 3;
+        [SerializeField, Range(2, 6)] private int countdownTime = 4;
         [SerializeField] private string gameStartString = "Começou";
         [SerializeField, Range(0.05f, 0.8f)] private float animationTime = 0.25f;
         [SerializeField] private Vector3 animationScale = Vector3.one;
@@ -26,6 +27,7 @@ namespace ONCGM.Utility {
         private WaitForSecondsRealtime waitASecond;
         private WaitForFixedUpdate waitFixedUpdate;
         private Action gameControllerBeginFunction;
+        private LoadingAnimation loadingAnimation;
         
         // Components.
         private TMP_Text displayText;
@@ -39,10 +41,11 @@ namespace ONCGM.Utility {
             waitASecond = new WaitForSecondsRealtime(1f);
             waitFixedUpdate = new WaitForFixedUpdate();
             displayText = GetComponentInChildren<TMP_Text>();
+            loadingAnimation = FindObjectOfType<LoadingAnimation>();
         }
 
         /// <summary>
-        ///  Sets up the class variables and starts the countdown
+        /// Sets up the class variables and starts the countdown
         /// </summary>
         private void Start() {
             switch(GameManager.CurrentMinigame) {
@@ -56,10 +59,12 @@ namespace ONCGM.Utility {
                     // Add later.
                     break;
             }
-            
-            if(countdownTime > 0) StartCoroutine(nameof(Countdown));
+         
+            StartCoroutine(nameof(Countdown));
             UiAudioHandler.PlayClip(UiAudioClips.StartGame);
             AnimateUi();
+            FindObjectOfType<DeviceAngleInput>().RecenterReference();
+            loadingAnimation.StartAnimation();
         }
         
         
@@ -88,6 +93,7 @@ namespace ONCGM.Utility {
         private void CheckCountdown() {
             if(countdownTime > 0) return;
             StartCoroutine(nameof(FadeText));
+            loadingAnimation.StopAnimation();
         }
         
         /// <summary>

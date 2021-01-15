@@ -84,8 +84,7 @@ namespace ONCGM.VR.VRButtons {
         [ContextMenu("Load Game Delayed")]
         public void LoadGameSceneDelayed() {
             UiAudioHandler.PlayClip(UiAudioClips.Click);
-            GameManager.PauseGame(false);
-            FindObjectOfType<LoadingAnimation>().StartAnimation();
+            GameManager.PauseGame(false);            
             var canvas = GetComponent<CanvasGroup>();
 
             canvas.DOFade(0f, 1f);
@@ -100,11 +99,7 @@ namespace ONCGM.VR.VRButtons {
         /// </summary>
         /// <returns></returns>
         private IEnumerator LoadDelay() {
-            yield return new WaitForSeconds(2f);
-            
-            FindObjectOfType<LoadingAnimation>().StopAnimation();
-            yield return new WaitForSeconds(0.7f);
-            
+            yield return new WaitForSeconds(1.5f);
             GameManager.LoadScene(GameManager.MinigamesToLoad(), LoadSceneMode.Single);
         }
         

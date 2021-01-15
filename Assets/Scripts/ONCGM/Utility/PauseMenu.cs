@@ -65,6 +65,8 @@ namespace ONCGM.Utility {
         public void RestartGame() {
             UiAudioHandler.PlayClip(UiAudioClips.Click);
             
+            GameManager.PauseGame(false);
+            
             if((int) GameManager.CurrentMinigame < 3) {
                 GameManager.LoadScene((GameScene) ((int) GameScene.CatchGame + (int) GameManager.CurrentMinigame), LoadSceneMode.Single);
             } else {

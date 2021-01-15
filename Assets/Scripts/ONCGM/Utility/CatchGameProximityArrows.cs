@@ -43,6 +43,9 @@ namespace ONCGM.Utility {
 
         // Updates the position of the arrows.
         private void Update() {
+            // TODO: Disabled because it was not working. Needs fix.
+            return;
+            
             if(!display) return;
             var angle = Vector2.Angle(DeviceAngleInput.InputDirectionVector, desiredDirection);
 
@@ -50,7 +53,7 @@ namespace ONCGM.Utility {
                 spriteRenderer.color = proximityGradient.Evaluate(Mathf.InverseLerp(0f, 180f, Mathf.Abs(angle)));
             }
             
-            transform.GetChild(0).Rotate(Vector3.right, angle);
+            transform.GetChild(0).rotation = Quaternion.Euler(angle, 0f, 0f);
         }
 
         /// <summary>

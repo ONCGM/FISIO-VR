@@ -53,7 +53,7 @@ namespace ONCGM.VR.VRInput {
         // The calculated average acceleration of the device at a neutral position.
         private static Vector3 averagedAcceleration = Vector3.zero;
         // The acceleration of the device after subtracting the averaged acceleration.  
-        public static Vector3 CalibratedAcceleration { get; private set; }= Vector3.zero;
+        public static Vector3 CalibratedAcceleration { get; private set; } = Vector3.zero;
         // List of samples collected to average the device acceleration.
         private List<Vector3> accelerationSamples = new List<Vector3>();
         // Wait a frame used in the Collect Samples coroutine.
@@ -84,7 +84,7 @@ namespace ONCGM.VR.VRInput {
         /// Input direction converted into a vector for slightly more precise uses.
         /// X is left (+) and right (-). Y is front (-) and back (+). 
         /// </summary>
-        public static Vector2 InputDirectionVector { get; } = new Vector2();
+        public static Vector2 InputDirectionVector { get; set; } = new Vector2();
 
         /// <summary>
         /// Used to calculate input validation.
@@ -278,7 +278,7 @@ namespace ONCGM.VR.VRInput {
             }
             
             lastDirection = currentDirection;
-            inputDirectionVector = new Vector2((smoothDetection ? CalibratedAcceleration.y : Input.acceleration.y), (smoothDetection ? CalibratedAcceleration.z : Input.acceleration.z));
+            InputDirectionVector = new Vector2((smoothDetection ? CalibratedAcceleration.y : Input.acceleration.y), (smoothDetection ? CalibratedAcceleration.z : Input.acceleration.z));
             alreadyCalculatedADirection = false;
         }
 
@@ -297,6 +297,7 @@ namespace ONCGM.VR.VRInput {
 
             if(inputDir != CurrentDirection) OnInputChange.Invoke(inputDir);
             if(Input.GetKeyDown(KeyCode.Escape)) GameManager.PauseGame(!GameManager.IsPaused);
+            InputDirectionVector = input;
         }
         
         #endregion

@@ -18,6 +18,7 @@ namespace ONCGM.Utility {
         [SerializeField, Range(5f, 90f)] private float spriteSeparation = 0.2f;
         [SerializeField, Range(1, 26f)] private int amountOfSprites = 6;
         [SerializeField, Range(0.5f, 5f)] private float offsetFromCenter = 1f;
+        [SerializeField] private bool disableCanvasOnExit = true;
         [SerializeField] private Transform canvasTransform;
         [SerializeField] private string spritePrefabPath = "Prefabs/UI/Loading Sprite";
         [SerializeField] private GameObject spritePrefab;
@@ -78,7 +79,7 @@ namespace ONCGM.Utility {
                 sprite.StartCoroutine(nameof(LoadingSpriteFade.FadeOut));
             }
             spriteFades.Clear();
-            canvasTransform.gameObject.GetComponent<Canvas>().enabled = false;
+            if(disableCanvasOnExit) canvasTransform.gameObject.GetComponent<Canvas>().enabled = false;
         }
     }
 }

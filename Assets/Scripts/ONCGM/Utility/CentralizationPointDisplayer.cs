@@ -16,8 +16,9 @@ namespace ONCGM.Utility {
 
         // Setup.
         private void Awake() {
-            GameManager.OnPause.AddListener(ShowCentralizationPointIcon);
-            GameManager.OnResume.AddListener(HideCentralizationPointIcon);
+            // TODO: Disabled due to not being precise. New way of displaying info needed.
+            // GameManager.OnPause.AddListener(ShowCentralizationPointIcon);
+            // GameManager.OnResume.AddListener(HideCentralizationPointIcon);
             HideCentralizationPointIcon();
         }
 

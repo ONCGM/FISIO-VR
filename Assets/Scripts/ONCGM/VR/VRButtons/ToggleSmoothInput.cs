@@ -15,8 +15,10 @@ namespace ONCGM.VR.VRInput {
         /// <summary>
         /// Updates text values.
         /// </summary>
-        protected void Start() {
+        protected IEnumerator Start() {
+            yield return new WaitForSeconds(1f);
             ToggleState = GameManager.CurrentSettings.useSmoothedInput;
+            UpdateState();
         }
         
         /// <summary>

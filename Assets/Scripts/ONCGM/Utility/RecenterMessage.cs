@@ -21,7 +21,9 @@ namespace ONCGM.Utility {
             textMesh.alpha = 0f;
             OVRManager.HMDLost += DisplayMessage;
             OVRManager.VrFocusLost += DisplayMessage;
+        }
 
+        private void Start() {
             switch(GameManager.CurrentMinigame) {
                 case Minigames.CatchGame:
                     CatchMinigameController.Tick.AddListener(CheckErrorPercentageCatch);
@@ -31,7 +33,7 @@ namespace ONCGM.Utility {
                     break;
             }
         }
-        
+
         /// <summary>
         /// Checks to see if the player has made too many mistakes,
         /// and if so, suggests to recalibrate the game.

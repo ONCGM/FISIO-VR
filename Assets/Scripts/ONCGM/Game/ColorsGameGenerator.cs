@@ -390,7 +390,7 @@ namespace ONCGM.Game {
             var rightRenderers = GetRenderersBasedOnDirection(SpawnDirection.Right);
 
             while(!InputGenerateMode) {
-                var alpha = Mathf.Lerp(0,1f, Mathf.InverseLerp(0f, 1f, DeviceAngleInput.InputDirectionVector.y));
+                var alpha = Mathf.Lerp(0,1f, Mathf.InverseLerp(0f, 1f, DeviceAngleInput.InputDirectionVector.normalized.y));
                 Color color;
                 
                 foreach(var sprite in upRenderers) {
@@ -399,7 +399,7 @@ namespace ONCGM.Game {
                     sprite.color = color;
                 }
                 
-                alpha = Mathf.Lerp(0,1f, Mathf.InverseLerp(-1f, 0f, DeviceAngleInput.InputDirectionVector.y));
+                alpha = Mathf.Lerp(0,1f, Mathf.InverseLerp(0f, -1f, DeviceAngleInput.InputDirectionVector.normalized.y));
 
                 foreach(var sprite in downRenderers) {
                     color = sprite.color;
@@ -407,7 +407,7 @@ namespace ONCGM.Game {
                     sprite.color = color;
                 }
                 
-                alpha = Mathf.Lerp(0,1f, Mathf.InverseLerp(0f, 1f, DeviceAngleInput.InputDirectionVector.x));
+                alpha = Mathf.Lerp(0,1f, Mathf.InverseLerp(0f, 1f, DeviceAngleInput.InputDirectionVector.normalized.x));
 
                 foreach(var sprite in leftRenderers) {
                     color = sprite.color;
@@ -415,7 +415,7 @@ namespace ONCGM.Game {
                     sprite.color = color;
                 }
                 
-                alpha = Mathf.Lerp(0,1f, Mathf.InverseLerp(-1f, 0f, DeviceAngleInput.InputDirectionVector.x));
+                alpha = Mathf.Lerp(0,1f, Mathf.InverseLerp(0f, -1f, DeviceAngleInput.InputDirectionVector.normalized.x));
 
                 foreach(var sprite in rightRenderers) {
                     color = sprite.color;

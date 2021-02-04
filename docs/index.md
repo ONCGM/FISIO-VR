@@ -5,6 +5,10 @@ A principal função do jogo é de ajudar cadeirantes a exercitar o tronco e des
 Durante a primeira fase de desenvolvimento (até o final de 2020) foram produzidos 2 mini-jogos para o projeto. 
 *Atualmente o jogo está em processo de validação na [Universidade Feevale](https://feevale.br/).*
 
+## Premiação
+
+O projeto recebeu prêmio de melhor trabalho em duas categorias no [ITK 2020](https://www.itk.org.br/digital/trabalhos-aprovados) e teve também, um artigo aprovado com menção honrosa na [FIC 2020](https://www.feevale.br/cursos-e-eventos/feira-de-iniciacao-cientifica-2020).
+
 ## Mini-jogos
 
 ### Conceito e explanação

@@ -7,6 +7,7 @@ Durante a primeira fase de desenvolvimento (até o final de 2020) foram produzid
 ## Premiação
 
 [![YouTube](https://i.ytimg.com/an_webp/O7rYtVNPAoc/mqdefault_6s.webp?du=3000&sqp=CMuX8IAG&rs=AOn4CLDq2xnUe5uuee8BL3boHzqPD9XMPA)](https://youtu.be/O7rYtVNPAoc "Fisio-VR") 
+
 [YouTube](https://youtu.be/O7rYtVNPAoc "Fisio-VR") 
 
 O projeto recebeu prêmio de melhor trabalho em duas categorias no [ITK 2020](https://www.itk.org.br/digital/trabalhos-aprovados) e teve também, um artigo aprovado com menção honrosa na [FIC 2020](https://www.feevale.br/cursos-e-eventos/feira-de-iniciacao-cientifica-2020).

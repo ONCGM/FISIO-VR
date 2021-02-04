@@ -1,14 +1,15 @@
 ## Sobre
-<img src="https://raw.githubusercontent.com/ONCGM/fisio-vr/master/docs/fisio_frames_21.png" alt="" class="inline">
+[![YouTube](https://i.ytimg.com/an_webp/O7rYtVNPAoc/mqdefault_6s.webp?du=3000&sqp=CMuX8IAG&rs=AOn4CLDq2xnUe5uuee8BL3boHzqPD9XMPA)](https://youtu.be/O7rYtVNPAoc "Fisio-VR") 
+
+[YouTube](https://youtu.be/O7rYtVNPAoc "Fisio-VR") 
+
 A principal função do jogo é de ajudar cadeirantes a exercitar o tronco e desenvolver um melhor equilíbrio na cadeira de rodas enquanto se divertem com um dos mini-jogos. O jogo se trata de uma compilação de mini-jogos, onde o jogador interage utilizando movimentos com o tronco. Sendo um conjunto de vários pequenos jogos, é possível um escopo escalável, baseado na demanda e necessidade do projeto. 
 Durante a primeira fase de desenvolvimento (até o final de 2020) foram produzidos 2 mini-jogos para o projeto. 
 *Atualmente o jogo está em processo de validação na [Universidade Feevale](https://feevale.br/).*
 
 ## Premiação
 
-[![YouTube](https://i.ytimg.com/an_webp/O7rYtVNPAoc/mqdefault_6s.webp?du=3000&sqp=CMuX8IAG&rs=AOn4CLDq2xnUe5uuee8BL3boHzqPD9XMPA)](https://youtu.be/O7rYtVNPAoc "Fisio-VR") 
-
-[YouTube](https://youtu.be/O7rYtVNPAoc "Fisio-VR") 
+<img src="https://raw.githubusercontent.com/ONCGM/fisio-vr/master/docs/fisio_frames_21.png" alt="" class="inline">
 
 O projeto recebeu prêmio de melhor trabalho em duas categorias no [ITK 2020](https://www.itk.org.br/digital/trabalhos-aprovados) e teve também, um artigo aprovado com menção honrosa na [FIC 2020](https://www.feevale.br/cursos-e-eventos/feira-de-iniciacao-cientifica-2020).
 

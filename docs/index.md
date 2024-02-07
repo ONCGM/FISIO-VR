@@ -1,7 +1,8 @@
 ## Sobre
-<iframe src="https://www.youtube.com/watch?v=O7rYtVNPAoc">    
-</iframe>
+[![Fisio-VR](https://img.youtube.com/vi/O7rYtVNPAoc/hqdefault.jpg)](https://www.youtube.com/embed/O7rYtVNPAoc)
 
+[<img src="https://img.youtube.com/vi/O7rYtVNPAoc>/hqdefault.jpg" width="600" height="300"
+/>](https://www.youtube.com/embed/O7rYtVNPAoc)
 
 A principal função do jogo é de ajudar cadeirantes a exercitar o tronco e desenvolver um melhor equilíbrio na cadeira de rodas enquanto se divertem com um dos mini-jogos. O jogo se trata de uma compilação de mini-jogos, onde o jogador interage utilizando movimentos com o tronco. Sendo um conjunto de vários pequenos jogos, é possível um escopo escalável, baseado na demanda e necessidade do projeto. 
 Durante a primeira fase de desenvolvimento (até o final de 2020) foram produzidos 2 mini-jogos para o projeto. 
